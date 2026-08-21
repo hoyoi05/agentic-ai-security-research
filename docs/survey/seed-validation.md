@@ -57,7 +57,7 @@ Crossref와 DBLP를 OpenAlex·arXiv와 동일한 recall denominator로 합치지
 5. 누락 원인을 index, query, date, type, metadata 또는 API failure로 분류
 6. 일반화 가능한 query 변경만 제안
 7. 변경 전후 seed recall과 pilot noise 비교
-8. v1.1 query를 고정하거나 protocol deviation 기록
+8. v1.2 query를 고정하거나 protocol deviation 기록
 
 ## 2026-08-21 파일럿 상태
 
@@ -66,4 +66,8 @@ Crossref와 DBLP를 OpenAlex·arXiv와 동일한 recall denominator로 합치지
 - 미회수 2편은 contextual seed로서 core-security recall 분모에서 제외
 - OpenAlex: 30건의 HTTP 429로 완료되지 않아 recall을 산출하지 않음
 
-따라서 arXiv는 잠정 90% 기준을 통과했으며, OpenAlex는 rate-aware 재실행 전까지 미검증 상태입니다. 세부 요청 로그와 결과는 [파일럿 결과](pilot-results.md)에 기록합니다. 구독 데이터베이스 계정은 실행 조건이 아닙니다.
+따라서 arXiv는 잠정 90% 기준을 통과했습니다. OpenAlex는 직렬 요청과 backoff를 적용한 재실행에서도 첫 요청부터 HTTP 429가 발생했으며, 실규모 사용에는 무료 API key가 필요한 현재 정책을 확인했습니다. API key가 제공될 때까지 OpenAlex는 미검증 상태로 유지합니다. 세부 요청 로그와 결과는 [파일럿 결과](pilot-results.md)에 기록합니다. 구독 데이터베이스 계정은 실행 조건이 아닙니다.
+
+## 제목·초록 파일럿
+
+arXiv Q-A와 Q-D의 relevance 상위 25건씩과 seed 18편을 결합해 61편을 판정했습니다. 57편 include, 3편 exclude, 1편 uncertain이며, 자세한 표본 구성과 제한사항은 [제목·초록 파일럿 결과](title-abstract-screening-pilot.md)에 기록합니다.
