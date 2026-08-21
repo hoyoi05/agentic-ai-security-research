@@ -7,6 +7,7 @@ import csv
 from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import json
+import os
 import re
 import time
 import urllib.error
@@ -62,6 +63,9 @@ ARXIV_QA = f'({ARXIV_AGENT}) AND (all:security OR all:attack OR all:vulnerabilit
 ARXIV_QD = f'({ARXIV_AGENT}) AND (all:security OR all:defense OR all:authentication OR all:authorization OR all:identity OR all:credential OR all:"access control" OR all:privilege OR all:delegation OR all:provenance OR all:observability OR all:monitoring OR all:audit OR all:forensic OR all:containment OR all:recovery OR all:rollback OR all:sandbox)'
 
 LOG_ROWS: list[dict[str, object]] = []
+LAST_REQUEST_AT: dict[str, float] = {}
+OPENALEX_MIN_INTERVAL_SECONDS = 0.35
+OPENALEX_API_KEY = os.environ.get("OPENALEX_API_KEY", "").strip()
 
 
 def now() -> str:
@@ -73,20 +77,29 @@ def normalize_title(value: str) -> str:
 
 
 def request(url: str, source: str, purpose: str, query_id: str, seed_id: str = "") -> tuple[int, bytes]:
+    if source == "openalex":
+        elapsed = time.monotonic() - LAST_REQUEST_AT.get(source, 0.0)
+        if elapsed < OPENALEX_MIN_INTERVAL_SECONDS:
+            time.sleep(OPENALEX_MIN_INTERVAL_SECONDS - elapsed)
     started = now()
     status = 0
     body = b""
     error = ""
     for attempt in range(5):
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "agentic-ai-security-research-seed-pilot/1.2"})
+            headers = {"User-Agent": "agentic-ai-security-research-seed-pilot/1.2"}
+            if source == "openalex":
+                headers["Authorization"] = f"Bearer {OPENALEX_API_KEY}"
+            req = urllib.request.Request(url, headers=headers)
             with urllib.request.urlopen(req, timeout=45) as response:
                 status = response.status
                 body = response.read()
+            LAST_REQUEST_AT[source] = time.monotonic()
             break
         except urllib.error.HTTPError as exc:
             status = exc.code
             error = f"HTTPError: {exc}"
+            LAST_REQUEST_AT[source] = time.monotonic()
             if exc.code == 429 and attempt < 4:
                 delay = int(exc.headers.get("Retry-After", "5")) * (attempt + 1)
                 time.sleep(delay)
@@ -225,6 +238,8 @@ def write_csv(path: Path, rows: list[dict[str, object]]) -> None:
 
 
 def main() -> None:
+    if not OPENALEX_API_KEY:
+        raise SystemExit("OPENALEX_API_KEY is required; configure it as a GitHub Actions secret")
     recall_rows = openalex() + arxiv()
     write_csv(OUT / "seed-recall-pilot-2026-08-21.csv", recall_rows)
     write_csv(OUT / "pilot-search-log-2026-08-21.csv", LOG_ROWS)
