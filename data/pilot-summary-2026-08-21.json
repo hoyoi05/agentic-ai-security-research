@@ -1,0 +1,32 @@
+{
+  "openalex_v1.1": {
+    "seed_count": 18,
+    "index_confirmed": 6,
+    "index_unknown_due_to_http_429": 12,
+    "retrieval_confirmed_true": 2,
+    "retrieval_unknown_among_indexed": 4,
+    "conditional_recall": null
+  },
+  "arxiv_v1.1": {
+    "indexed": 18,
+    "retrieved_union": 14,
+    "overall_recall": 0.7777777777777778
+  },
+  "arxiv_v1.2": {
+    "indexed": 18,
+    "retrieved_union": 16,
+    "overall_recall": 0.8888888888888888,
+    "core_security_retrieved": 16,
+    "core_security_total": 16,
+    "core_security_recall": 1.0,
+    "contextual_not_retrieved": [
+      "indirect-prompt-injection-2023",
+      "skillopt-2026"
+    ]
+  },
+  "http": {
+    "request_rows": 107,
+    "openalex_rate_limited_requests": 30
+  },
+  "interpretation": "OpenAlex recall is not estimable from this run; arXiv v1.2 meets the provisional threshold for core-security seeds only."
+}
