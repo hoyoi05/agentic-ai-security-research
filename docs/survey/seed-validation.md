@@ -64,6 +64,7 @@ Crossref와 DBLP를 OpenAlex·arXiv와 동일한 recall denominator로 합치지
 - arXiv v1.1: 전체 seed 14/18 회수
 - arXiv v1.2: 전체 seed 16/18, core-security seed 16/16 회수(100%)
 - 미회수 2편은 contextual seed로서 core-security recall 분모에서 제외
-- OpenAlex: 30건의 HTTP 429로 완료되지 않아 recall을 산출하지 않음
+- OpenAlex v1.2 인증 실행: indexed seed 4/16 회수(25.0%)
+- OpenAlex v1.3.1: 전체 18/18, core-security 16/16 회수(100%)
 
-따라서 arXiv는 잠정 90% 기준을 통과했으며, OpenAlex는 rate-aware 재실행 전까지 미검증 상태입니다. 세부 요청 로그와 결과는 [파일럿 결과](pilot-results.md)에 기록합니다. 구독 데이터베이스 계정은 실행 조건이 아닙니다.
+따라서 arXiv v1.2와 OpenAlex v1.3.1은 잠정 90% 기준을 통과했습니다. OpenAlex v1.2의 실패 원인은 인접 용어가 암묵적 AND로 처리된 query 표현이었으며, 명시적 Boolean OR 그룹으로 교정했습니다. 세부 요청 로그와 결과는 [파일럿 결과](pilot-results.md)와 [OpenAlex 인증 결과](openalex-authenticated-pilot.md)에 기록합니다. 구독 데이터베이스 계정은 실행 조건이 아닙니다.
