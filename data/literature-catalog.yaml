@@ -1,0 +1,290 @@
+schema_version: 1.0
+collection_id: broad-agentic-ai-security-2026-08-21-batch-1
+retrieved_at: 2026-08-21
+scope: Agentic AI security papers and official white papers/guides
+summary_policy: Korean paraphrase of the author abstract or official overview; no verbatim abstract reproduction
+records:
+  - id: toolemu-2023
+    title: "Identifying the Risks of LM Agents with an LM-Emulated Sandbox"
+    type: paper
+    year: 2023
+    authors_or_organization: "Yangjun Ruan et al."
+    identifier: "arXiv:2309.15817"
+    doi: "10.48550/arXiv.2309.15817"
+    url: https://arxiv.org/abs/2309.15817
+    topics: [tool-security, sandbox, risk-evaluation, benchmark]
+    abstract_summary_type: paraphrased-from-author-abstract
+    abstract_summary_ko: >-
+      ToolEmu는 실제 도구와 환경을 매번 구축하지 않고도 언어모델이 도구 실행을 모사하도록 하여
+      에이전트의 장기 꼬리 위험을 시험하는 프레임워크다. 저자들은 고위험 도구와 테스트 사례,
+      자동 안전성 평가기를 이용해 개인정보 유출과 재무 손실 같은 실패를 측정한다.
+    evidence_status: primary-source-checked
+    claims_status: author-claimed
+    reproduction_status: not-reproduced
+    limitations: "LM-emulated tool behavior and evaluator judgments may differ from real systems."
+
+  - id: injecagent-2024
+    title: "InjecAgent: Benchmarking Indirect Prompt Injections in Tool-Integrated Large Language Model Agents"
+    type: paper
+    year: 2024
+    authors_or_organization: "Qiusi Zhan, Zhixiang Liang, Zifan Ying, and Daniel Kang"
+    identifier: "arXiv:2403.02691"
+    doi: "10.48550/arXiv.2403.02691"
+    venue: "Findings of ACL 2024"
+    url: https://arxiv.org/abs/2403.02691
+    topics: [indirect-prompt-injection, tool-security, benchmark, data-exfiltration]
+    abstract_summary_type: paraphrased-from-author-abstract
+    abstract_summary_ko: >-
+      InjecAgent는 외부 콘텐츠에 삽입된 악성 지시가 도구 통합형 에이전트를 조작하는 간접
+      프롬프트 주입을 평가한다. 사용자 피해와 비공개 데이터 유출을 포함한 공격 의도,
+      다양한 사용자·공격자 도구 및 다수 에이전트 구성을 벤치마킹한다.
+    evidence_status: primary-source-checked
+    claims_status: author-claimed
+    reproduction_status: not-reproduced
+    limitations: "Reported attack rates depend on the tested prompts, agents, and model versions."
+
+  - id: agentdojo-2024
+    title: "AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents"
+    type: paper
+    year: 2024
+    authors_or_organization: "Edoardo Debenedetti et al."
+    identifier: "arXiv:2406.13352"
+    doi: "10.48550/arXiv.2406.13352"
+    url: https://arxiv.org/abs/2406.13352
+    topics: [prompt-injection, tool-security, attack-defense-evaluation, benchmark]
+    abstract_summary_type: paraphrased-from-author-abstract
+    abstract_summary_ko: >-
+      AgentDojo는 신뢰할 수 없는 데이터를 처리하면서 도구를 실행하는 에이전트의 공격·방어를
+      동적으로 평가하는 확장형 환경이다. 현실적 업무, 보안 테스트 사례, 공격 및 방어 구성을
+      함께 제공해 유용성과 보안을 동시에 비교할 수 있게 한다.
+    evidence_status: primary-source-checked
+    claims_status: author-claimed
+    reproduction_status: not-reproduced
+    limitations: "Results are bounded by the included task families and evaluated model snapshots."
+
+  - id: asb-2024
+    title: "Agent Security Bench (ASB): Formalizing and Benchmarking Attacks and Defenses in LLM-based Agents"
+    type: paper
+    year: 2024
+    authors_or_organization: "Hanrong Zhang et al."
+    identifier: "arXiv:2410.02644"
+    doi: "10.48550/arXiv.2410.02644"
+    venue: "ICLR 2025"
+    url: https://arxiv.org/abs/2410.02644
+    topics: [agent-security, prompt-injection, memory-poisoning, backdoor, benchmark]
+    abstract_summary_type: paraphrased-from-author-abstract
+    abstract_summary_ko: >-
+      ASB는 여러 응용 시나리오, 에이전트, 도구, 공격·방어 기법과 평가 지표를 통합해
+      LLM 에이전트 보안을 체계적으로 비교한다. 프롬프트 주입, 메모리 오염,
+      Plan-of-Thought 백도어와 혼합 공격을 다양한 모델에서 평가한다.
+    evidence_status: primary-source-checked
+    claims_status: author-claimed
+    reproduction_status: not-reproduced
+    limitations: "Benchmark coverage is broad but does not establish completeness over real deployments."
+
+  - id: agentharm-2024
+    title: "AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents"
+    type: paper
+    year: 2024
+    authors_or_organization: "Maksym Andriushchenko et al."
+    identifier: "arXiv:2410.09024"
+    doi: "10.48550/arXiv.2410.09024"
+    venue: "ICLR 2025"
+    url: https://arxiv.org/abs/2410.09024
+    topics: [harmful-agent-behavior, jailbreak, misuse, benchmark]
+    abstract_summary_type: paraphrased-from-author-abstract
+    abstract_summary_ko: >-
+      AgentHarm은 사기, 사이버범죄, 괴롭힘 등 여러 유해 범주에 걸친 악성 다단계 작업으로
+      에이전트 오용 가능성을 평가한다. 단순 거부 여부뿐 아니라 탈옥 이후에도 에이전트가
+      작업 수행 능력을 유지하며 유해 행동을 완료하는지를 측정한다.
+    evidence_status: primary-source-checked
+    claims_status: author-claimed
+    reproduction_status: not-reproduced
+    limitations: "Explicitly malicious tasks measure misuse robustness, not all accidental failure modes."
+
+  - id: camel-2025
+    title: "Defeating Prompt Injections by Design"
+    type: paper
+    year: 2025
+    authors_or_organization: "Edoardo Debenedetti et al."
+    identifier: "arXiv:2503.18813"
+    doi: "10.48550/arXiv.2503.18813"
+    url: https://arxiv.org/abs/2503.18813
+    topics: [prompt-injection-defense, control-flow, data-flow, capability-security]
+    abstract_summary_type: paraphrased-from-author-abstract
+    abstract_summary_ko: >-
+      CaMeL은 신뢰된 사용자 질의에서 제어 흐름과 데이터 흐름을 분리하고, 신뢰할 수 없는
+      데이터가 프로그램 흐름을 바꾸지 못하게 하는 보호 계층을 제안한다. 도구 호출 시
+      capability 기반 정책을 적용해 승인되지 않은 데이터 유출 경로도 제한한다.
+    evidence_status: primary-source-checked
+    claims_status: author-claimed
+    reproduction_status: not-reproduced
+    limitations: "Security guarantees rely on the extracted control/data-flow model and policy assumptions."
+
+  - id: progent-2025
+    title: "Progent: Securing AI Agents with Privilege Control"
+    type: paper
+    year: 2025
+    authors_or_organization: "Tianneng Shi et al."
+    identifier: "arXiv:2504.11703"
+    doi: "10.48550/arXiv.2504.11703"
+    url: https://arxiv.org/abs/2504.11703
+    topics: [least-privilege, tool-authorization, policy, privilege-control]
+    abstract_summary_type: paraphrased-from-author-abstract
+    abstract_summary_ko: >-
+      Progent는 도구 이름과 인자를 대상으로 한 기호 정책으로 모든 도구 호출을 결정적으로
+      검사한다. 실행 중 정책 변경을 축소와 확장으로 구분하고, 권한 확장에는 명시적 승인을
+      요구해 승인 없는 유효 행동 공간이 단조롭게 줄어들도록 설계한다.
+    evidence_status: primary-source-checked
+    claims_status: author-claimed
+    reproduction_status: not-reproduced
+    limitations: "Policy generation still uses an LLM; effectiveness depends on policy quality and tool mediation coverage."
+
+  - id: multi-agent-security-challenges-2025
+    title: "Open Challenges in Multi-Agent Security: Towards Secure Systems of Interacting AI Agents"
+    type: paper
+    year: 2025
+    authors_or_organization: "Christian Schroeder de Witt et al."
+    identifier: "arXiv:2505.02077"
+    doi: "10.48550/arXiv.2505.02077"
+    url: https://arxiv.org/abs/2505.02077
+    topics: [multi-agent-security, collusion, swarm-attacks, systemic-risk]
+    abstract_summary_type: paraphrased-from-author-abstract
+    abstract_summary_ko: >-
+      이 논문은 에이전트 간 직접 상호작용과 공유 환경에서 증폭되는 공모, 스웜 공격,
+      개인정보 침해, 탈옥 및 데이터 오염을 다중 에이전트 보안 문제로 정리한다.
+      분산·탈중앙 환경의 보안 상충관계를 제시하고 통합 연구 의제를 제안한다.
+    evidence_status: primary-source-checked
+    claims_status: author-claimed
+    reproduction_status: not-reproduced
+    limitations: "Primarily a taxonomy and research agenda rather than an end-to-end evaluated defense."
+
+  - id: protocol-exploits-survey-2025
+    title: "From Prompt Injections to Protocol Exploits: Threats in LLM-Powered AI Agents Workflows"
+    type: journal-paper
+    year: 2025
+    authors_or_organization: "Mohamed Amine Ferrag et al."
+    identifier: "arXiv:2506.23260"
+    doi: "10.1016/j.icte.2025.12.001"
+    venue: "ICT Express"
+    url: https://arxiv.org/abs/2506.23260
+    topics: [protocol-security, mcp, tool-security, multi-agent, threat-model]
+    abstract_summary_type: paraphrased-from-author-abstract
+    abstract_summary_ko: >-
+      이 서베이는 호스트-도구와 에이전트-에이전트 통신을 포함하는 종단 간 위협 모델을
+      구성하고 입력 조작부터 프로토콜 취약점까지 공격 기법을 분류한다. 동적 신뢰 관리,
+      암호학적 provenance와 샌드박스형 인터페이스를 대응 방향으로 검토한다.
+    evidence_status: primary-source-checked
+    claims_status: author-claimed
+    reproduction_status: not-reproduced
+    limitations: "Cross-mapping and expert review support the taxonomy but do not independently validate every attack."
+
+  - id: agentic-security-survey-2025
+    title: "A Survey on Agentic Security: Applications, Threats and Defenses"
+    type: paper
+    year: 2025
+    authors_or_organization: "Asif Shahriar et al."
+    identifier: "arXiv:2510.06445"
+    doi: "10.48550/arXiv.2510.06445"
+    url: https://arxiv.org/abs/2510.06445
+    topics: [survey, taxonomy, cybersecurity-applications, threats, defenses]
+    abstract_summary_type: paraphrased-from-author-abstract
+    abstract_summary_ko: >-
+      이 서베이는 Agentic AI 보안을 응용, 위협, 방어의 세 축으로 구성하고 대규모 문헌을
+      통합 분류한다. 공격 진입점과 에이전트 루프 단계, 방어 배치 위치, 비용·보안 상충관계를
+      연결해 단일 계층 방어의 한계를 분석한다.
+    evidence_status: primary-source-checked
+    claims_status: author-claimed
+    reproduction_status: not-reproduced
+    limitations: "The corpus and taxonomy are author-curated and require independent screening validation."
+
+  - id: attack-surface-sok-2026
+    title: "SoK: The Attack Surface of Agentic AI - Tools and Autonomy"
+    type: paper
+    year: 2026
+    authors_or_organization: "Ali Dehghantanha and Sajad Homayoun"
+    identifier: "arXiv:2603.22928"
+    doi: "10.48550/arXiv.2603.22928"
+    url: https://arxiv.org/abs/2603.22928
+    topics: [sok, attack-surface, tool-security, rag-poisoning, multi-agent]
+    abstract_summary_type: paraphrased-from-author-abstract
+    abstract_summary_ko: >-
+      이 SoK는 도구, RAG, 자율 다중 에이전트 루프로 확장되는 신뢰 경계와 공격 표면을
+      정리한다. 프롬프트 주입, 지식베이스 오염, 플러그인 악용과 교차 에이전트 조작을
+      분류하고 배포 단계별 방어 체크리스트와 평가 지표를 제안한다.
+    evidence_status: primary-source-checked
+    claims_status: author-claimed
+    reproduction_status: not-reproduced
+    limitations: "The systematization synthesizes selected literature and reports; it is not a complete systematic review."
+
+  - id: owasp-agentic-top10-2026
+    title: "OWASP Top 10 for Agentic Applications for 2026"
+    type: white-paper-guide
+    year: 2025
+    published_date: 2025-12-09
+    authors_or_organization: "OWASP GenAI Security Project"
+    url: https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/
+    topics: [risk-taxonomy, secure-development, governance, agentic-applications]
+    abstract_summary_type: paraphrased-from-official-overview
+    abstract_summary_ko: >-
+      OWASP가 자율적으로 계획·행동·의사결정하는 애플리케이션에서 우선 대응해야 할 보안
+      위험을 운영 관점의 목록으로 정리한 가이드다. 개발자와 방어자가 위험 완화 활동을
+      시작할 수 있도록 공통 분류와 실무 지침을 제공한다.
+    evidence_status: official-source-checked
+    claims_status: organization-published
+    reproduction_status: not-applicable
+    limitations: "A consensus risk guide, not an empirical benchmark or formal standard."
+
+  - id: owasp-securing-agentic-guide-1
+    title: "Securing Agentic Applications Guide 1.0"
+    type: white-paper-guide
+    year: null
+    published_date: not-stated-on-landing-page
+    authors_or_organization: "OWASP GenAI Security Project"
+    url: https://genai.owasp.org/resource/securing-agentic-applications-guide-1-0/
+    topics: [secure-design, secure-development, deployment, operations]
+    abstract_summary_type: paraphrased-from-official-overview
+    abstract_summary_ko: >-
+      LLM 기반 Agentic 애플리케이션의 설계, 개발, 배포 단계에서 적용할 수 있는 구체적인
+      보안 권고를 제공한다. 위협 분류 중심 자료를 보완해 구현자와 방어자가 적용할
+      기술적 통제에 초점을 둔다.
+    evidence_status: official-source-checked
+    claims_status: organization-published
+    reproduction_status: not-applicable
+    limitations: "The landing page does not state a publication date; guidance requires environment-specific validation."
+
+  - id: owasp-agentic-threats-mitigations
+    title: "Agentic AI - Threats and Mitigations"
+    type: white-paper-guide
+    year: null
+    published_date: not-stated-on-landing-page
+    authors_or_organization: "OWASP GenAI Security Project"
+    url: https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations/
+    topics: [threat-model, mitigations, autonomous-systems, llm-agents]
+    abstract_summary_type: paraphrased-from-official-overview
+    abstract_summary_ko: >-
+      현대 LLM과 결합된 Agentic AI의 규모·자율성이 확대하면서 나타나는 위협을
+      위협 모델 기반으로 설명하고 대응책을 연결하는 참고 문서다. OWASP Agentic
+      Security Initiative의 후속 실무 가이드들을 위한 기초 분류 역할을 한다.
+    evidence_status: official-source-checked
+    claims_status: organization-published
+    reproduction_status: not-applicable
+    limitations: "The landing page does not state a publication date; recommendations are not a formal standard."
+
+  - id: nist-agent-identity-authorization-2026
+    title: "Accelerating the Adoption of Software and Artificial Intelligence Agent Identity and Authorization"
+    type: government-concept-paper
+    year: 2026
+    published_date: 2026-02-05
+    authors_or_organization: "Harold Booth, William Fisher, Ryan Galluzzo, and Joshua Roberts (NIST)"
+    url: https://csrc.nist.gov/pubs/other/2026/02/05/accelerating-the-adoption-of-software-and-ai-agent/ipd
+    topics: [agent-identity, authorization, auditing, non-repudiation, prompt-injection]
+    abstract_summary_type: paraphrased-from-official-announcement
+    abstract_summary_ko: >-
+      NIST NCCoE가 소프트웨어 및 AI 에이전트에 기존 신원 표준과 모범사례를 적용하기 위한
+      프로젝트 고려사항을 제시한 개념 문서다. 식별, 권한부여, 감사, 부인방지와
+      프롬프트 주입 통제를 포함해 산업의 사용 사례·기술·표준 현황에 대한 의견을 요청한다.
+    evidence_status: official-source-checked
+    claims_status: government-published-draft
+    reproduction_status: not-applicable
+    limitations: "Initial public draft concept paper; it is not a finalized NIST standard."
