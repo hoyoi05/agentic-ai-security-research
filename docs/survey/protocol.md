@@ -1,8 +1,8 @@
 # 체계적 매핑 연구 프로토콜
 
-> 프로토콜 버전: 1.1-draft  
+> 프로토콜 버전: 1.2-pilot  
 > 기준일: 2026-08-21  
-> 상태: 공개 검색원 pilot 실행 전  
+> 상태: arXiv pilot 완료; OpenAlex rate-aware 재실행 필요  
 > 변경 사유: Scopus, Web of Science와 IEEE Xplore 구독 접근 부재
 
 ## 1. 프로토콜 관리
@@ -54,7 +54,7 @@ Google Scholar는 결과 순위와 전체 결과 집합의 재현이 제한되�
 2. **Query retrieval:** Q-A 또는 Q-D query가 해당 레코드를 회수하는가?
 3. **Metadata verification:** DOI, arXiv ID, 저자, 연도와 publication status를 권위 있는 원본에서 확인했는가?
 
-색인되지 않은 seed는 query false negative로 계산하지 않습니다. 검색어 수정은 특정 제목에만 맞춘 용어가 아니라 누락된 일반 개념을 보완할 때만 허용합니다.
+색인되지 않은 seed는 query false negative로 계산하지 않습니다. API 실패와 rate limit은 false가 아니라 `unknown` 또는 `not_tested`로 기록합니다. Seed는 보안 query 회수가 기대되는 `core-security`와 경계 검증용 `contextual`로 구분하며, contextual seed는 query-recall 분모에서 제외합니다. 검색어 수정은 특정 제목에만 맞춘 용어가 아니라 누락된 일반 개념을 보완할 때만 허용합니다.
 
 ## 5. 포함 기준
 
