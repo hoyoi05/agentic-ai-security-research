@@ -1,0 +1,17 @@
+{
+  "records": 61,
+  "include": 57,
+  "exclude": 3,
+  "uncertain": 1,
+  "seed_calibration": {
+    "include": 16,
+    "exclude": 1,
+    "uncertain": 1
+  },
+  "precision_at_25_union": {
+    "include": 41,
+    "exclude": 2,
+    "uncertain": 0,
+    "provisional_include_rate": 0.9534883720930233
+  }
+}
