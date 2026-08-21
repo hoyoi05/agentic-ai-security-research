@@ -1,1 +1,1 @@
-seed_id,database,index_presence,index_check_method,index_check_date,retrieved_by_qa,retrieved_by_qd,query_version,notes
+seed_id,source,source_role,index_presence,index_check_method,index_check_date,retrieved_by_qa,retrieved_by_qd,query_version,metadata_verified,notes
