@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 1.1
 last_updated: 2026-08-21
 purpose: search-recall-validation
 studies:
@@ -100,3 +100,31 @@ studies:
     url: https://arxiv.org/abs/2605.24069
     domains: [tool-mcp-supply-chain, evaluation-benchmark]
     roles: [attack, defense, benchmark]
+  - id: delegated-observability-2026
+    title: "Observability for Delegated Execution in Agentic AI Systems"
+    year: 2026
+    identifier: arXiv:2606.09692
+    url: https://arxiv.org/abs/2606.09692
+    domains: [identity-authorization, delegation-multi-agent, runtime-provenance-forensics]
+    roles: [defense, measurement, forensics]
+  - id: evidence-provenance-survey-2026
+    title: "A Survey of Evidence Tracing and Execution Provenance for LLM Agents"
+    year: 2026
+    identifier: arXiv:2606.04990
+    url: https://arxiv.org/abs/2606.04990
+    domains: [runtime-provenance-forensics]
+    roles: [survey, taxonomy]
+  - id: agentic-investigations-2026
+    title: "Foundations for Agentic AI Investigations from the Forensic Analysis of OpenClaw"
+    year: 2026
+    identifier: arXiv:2604.05589
+    url: https://arxiv.org/abs/2604.05589
+    domains: [runtime-provenance-forensics]
+    roles: [forensics, measurement, evaluation]
+  - id: sentinelagent-2026
+    title: "SentinelAgent: Intent-Verified Delegation Chains for Securing Federal Multi-Agent AI Systems"
+    year: 2026
+    identifier: arXiv:2604.02767
+    url: https://arxiv.org/abs/2604.02767
+    domains: [identity-authorization, delegation-multi-agent]
+    roles: [defense, formal-model, forensics]
