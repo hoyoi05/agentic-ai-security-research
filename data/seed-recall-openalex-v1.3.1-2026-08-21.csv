@@ -1,0 +1,37 @@
+seed_id,source,source_role,index_presence,index_check_method,index_check_date,retrieved_by_qa,retrieved_by_qd,query_version,metadata_verified,notes
+indirect-prompt-injection-2023,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W4388886073|https://openalex.org/W4321855128;qa=oa-qa-01|oa-qa-03|oa-qa-09;qd=oa-qd-01|oa-qd-03|oa-qd-09
+toolemu-2023,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W4387164935;qa=oa-qa-01|oa-qa-02|oa-qa-06;qd=oa-qd-01|oa-qd-02|oa-qd-06
+injecagent-2024,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W4402670146|https://openalex.org/W4392538073;qa=oa-qa-01|oa-qa-02|oa-qa-03|oa-qa-04|oa-qa-05|oa-qa-06|oa-qa-09;qd=oa-qd-01|oa-qd-02|oa-qd-03|oa-qd-04|oa-qd-05|oa-qd-06|oa-qd-09
+agentdojo-2024,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W4415796822;qa=oa-qa-03;qd=oa-qd-03
+agentpoison-2024,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W4415800619|https://openalex.org/W4403781307;qa=oa-qa-03|oa-qa-04|oa-qa-09;qd=oa-qd-03|oa-qd-04|oa-qd-09
+asb-2024,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W4403884175;qa=oa-qa-01|oa-qa-03|oa-qa-04|oa-qa-05|oa-qa-06;qd=oa-qd-01|oa-qd-03|oa-qd-04|oa-qd-05|oa-qd-06
+agentharm-2024,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W4403564213;qa=oa-qa-01|oa-qa-02|oa-qa-03|oa-qa-04|oa-qa-05|oa-qa-06;qd=oa-qd-01|oa-qd-02|oa-qd-03|oa-qd-04|oa-qd-05|oa-qd-06
+progent-2025,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W4416541023;qa=oa-qa-01|oa-qa-02|oa-qa-03|oa-qa-04|oa-qa-09;qd=oa-qd-01|oa-qd-02|oa-qd-03|oa-qd-04|oa-qd-09
+saga-2025,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W4415986067;qa=oa-qa-01|oa-qa-03|oa-qa-04|oa-qa-07|oa-qa-09;qd=oa-qd-01|oa-qd-03|oa-qd-04|oa-qd-07|oa-qd-09
+mcp-attack-vectors-2025,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W4414597551;qa=oa-qa-03;qd=oa-qd-03
+agentsight-2025,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W4414688275;qa=oa-qa-01|oa-qa-03;qd=oa-qd-01|oa-qd-03
+prov-agent-2025,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,false,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W4414898436;qa=;qd=oa-qd-01
+skillopt-2026,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,false,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W7162340582|https://openalex.org/W7162606456;qa=;qd=oa-qd-01|oa-qd-03
+mcp-tdp-2026,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W7162412584|https://openalex.org/W7162605365|https://openalex.org/W7167458388;qa=oa-qa-01|oa-qa-03|oa-qa-04|oa-qa-09;qd=oa-qd-01|oa-qd-03|oa-qd-04|oa-qd-09
+delegated-observability-2026,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W7164048629|https://openalex.org/W7164234267;qa=oa-qa-01|oa-qa-02|oa-qa-03|oa-qa-04|oa-qa-07|oa-qa-09;qd=oa-qd-01|oa-qd-02|oa-qd-03|oa-qd-04|oa-qd-07|oa-qd-09
+evidence-provenance-survey-2026,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,false,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W7163565702|https://openalex.org/W7163720195;qa=;qd=oa-qd-03|oa-qd-04
+agentic-investigations-2026,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W7152933919|https://openalex.org/W7151949659;qa=oa-qa-01|oa-qa-07|oa-qa-09;qd=oa-qd-01|oa-qd-07|oa-qd-09
+sentinelagent-2026,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,true,1.3.1-pilot,partial,openalex_ids=https://openalex.org/W7150786496|https://openalex.org/W7151673049;qa=oa-qa-07;qd=oa-qd-07
+indirect-prompt-injection-2023,arxiv,core-preprint,true,id_list,2026-08-21,false,false,1.3.1-pilot,true,arxiv_id=2302.12173
+toolemu-2023,arxiv,core-preprint,true,id_list,2026-08-21,false,true,1.3.1-pilot,true,arxiv_id=2309.15817
+injecagent-2024,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.3.1-pilot,true,arxiv_id=2403.02691
+agentdojo-2024,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.3.1-pilot,true,arxiv_id=2406.13352
+agentpoison-2024,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.3.1-pilot,true,arxiv_id=2407.12784
+asb-2024,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.3.1-pilot,true,arxiv_id=2410.02644
+agentharm-2024,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.3.1-pilot,true,arxiv_id=2410.09024
+progent-2025,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.3.1-pilot,true,arxiv_id=2504.11703
+saga-2025,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.3.1-pilot,true,arxiv_id=2504.21034
+mcp-attack-vectors-2025,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.3.1-pilot,true,arxiv_id=2506.02040
+agentsight-2025,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.3.1-pilot,true,arxiv_id=2508.02736
+prov-agent-2025,arxiv,core-preprint,true,id_list,2026-08-21,false,true,1.3.1-pilot,true,arxiv_id=2508.02866
+skillopt-2026,arxiv,core-preprint,true,id_list,2026-08-21,false,false,1.3.1-pilot,true,arxiv_id=2605.23904
+mcp-tdp-2026,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.3.1-pilot,true,arxiv_id=2605.24069
+delegated-observability-2026,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.3.1-pilot,true,arxiv_id=2606.09692
+evidence-provenance-survey-2026,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.3.1-pilot,true,arxiv_id=2606.04990
+agentic-investigations-2026,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.3.1-pilot,true,arxiv_id=2604.05589
+sentinelagent-2026,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.3.1-pilot,true,arxiv_id=2604.02767
