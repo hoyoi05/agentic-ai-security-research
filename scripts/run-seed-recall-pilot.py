@@ -54,8 +54,8 @@ AGENT_TERMS = [
     '"autonomous agent"',
 ]
 SUFFIXES = {
-    "qa": 'security attack vulnerability threat poisoning "prompt injection"',
-    "qd": "security defense authorization authentication delegation provenance forensic monitoring",
+    "qa": '(security OR attack OR vulnerability OR threat OR adversarial OR "prompt injection" OR poisoning OR backdoor OR jailbreak OR misuse OR compromise OR privacy)',
+    "qd": '(security OR defense OR authentication OR authorization OR identity OR credential OR "access control" OR privilege OR delegation OR provenance OR observability OR monitoring OR audit OR forensic OR containment OR recovery OR rollback OR sandbox)',
 }
 
 ARXIV_AGENT = 'all:"AI agent" OR all:"LM agent" OR all:"LLM agent" OR all:"LLM-based agent" OR all:"large language model agent" OR all:"language model agent" OR all:"agentic AI" OR all:"tool-using agent" OR all:"autonomous agent"'
@@ -87,7 +87,7 @@ def request(url: str, source: str, purpose: str, query_id: str, seed_id: str = "
     error = ""
     for attempt in range(5):
         try:
-            headers = {"User-Agent": "agentic-ai-security-research-seed-pilot/1.2"}
+            headers = {"User-Agent": "agentic-ai-security-research-seed-pilot/1.3"}
             if source == "openalex":
                 headers["Authorization"] = f"Bearer {OPENALEX_API_KEY}"
             req = urllib.request.Request(url, headers=headers)
@@ -143,7 +143,7 @@ def openalex() -> list[dict[str, object]]:
             for family, suffix in SUFFIXES.items():
                 for term_index, term in enumerate(AGENT_TERMS, 1):
                     query_id = f"oa-{family}-{term_index:02d}"
-                    query = f"{term} {suffix}"
+                    query = f"{term} AND {suffix}"
                     params = {
                         "filter": f"title.search:{title}",
                         "search": query,
@@ -175,7 +175,7 @@ def openalex() -> list[dict[str, object]]:
             "index_check_date": "2026-08-21",
             "retrieved_by_qa": retrieval["qa"],
             "retrieved_by_qd": retrieval["qd"],
-            "query_version": "1.2-pilot",
+            "query_version": "1.3-pilot",
             "metadata_verified": "partial" if exact_ids else "unknown",
             "notes": f"openalex_ids={'|'.join(exact_ids)};qa={'|'.join(matched['qa'])};qd={'|'.join(matched['qd'])}",
         }
@@ -222,7 +222,7 @@ def arxiv() -> list[dict[str, object]]:
             "index_check_date": "2026-08-21",
             "retrieved_by_qa": str(arxiv_id in sets["qa"]).lower(),
             "retrieved_by_qd": str(arxiv_id in sets["qd"]).lower(),
-            "query_version": "1.2-pilot",
+            "query_version": "1.3-pilot",
             "metadata_verified": str(arxiv_id in sets["index"]).lower(),
             "notes": f"arxiv_id={arxiv_id}",
         })
