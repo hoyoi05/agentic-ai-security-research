@@ -23,6 +23,11 @@ nav:
   - 홈: index.md
   - 연구 의제:
       - 신규 주제 탐색: research/topic-exploration.md
+      - FRIDA:
+          - 연구 개요: research/frida/overview.md
+          - 선행연구 맵: research/frida/related-work-map.md
+          - 최소 포렌식 증거: research/frida/minimum-evidence.md
+          - 논문·실험 로드맵: research/frida/research-roadmap.md
   - 서베이:
       - 범위와 연구 질문: survey/scope.md
       - SMS 프로토콜: survey/protocol.md
