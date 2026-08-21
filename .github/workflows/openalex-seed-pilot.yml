@@ -47,7 +47,7 @@ jobs:
       - name: Upload pilot artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: openalex-seed-pilot-v1-3
+          name: openalex-seed-pilot-v1-3-1
           path: |
             scripts/output/seed-recall-pilot-2026-08-21.csv
             scripts/output/pilot-search-log-2026-08-21.csv

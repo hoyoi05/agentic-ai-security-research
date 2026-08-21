@@ -57,7 +57,7 @@ studies:
     domains: [goal-prompt-context, evaluation-benchmark]
     roles: [attack, benchmark]
   - id: progent-2025
-    title: "Progent: Programmable Privilege Control for LLM Agents"
+    title: "Progent: Securing AI Agents with Privilege Control"
     year: 2025
     identifier: arXiv:2504.11703
     url: https://arxiv.org/abs/2504.11703
@@ -115,7 +115,7 @@ studies:
     domains: [identity-authorization, delegation-multi-agent, runtime-provenance-forensics]
     roles: [defense, measurement, forensics]
   - id: evidence-provenance-survey-2026
-    title: "A Survey of Evidence Tracing and Execution Provenance for LLM Agents"
+    title: "From Agent Traces to Trust: A Survey of Evidence Tracing and Execution Provenance in LLM Agents"
     year: 2026
     identifier: arXiv:2606.04990
     url: https://arxiv.org/abs/2606.04990
