@@ -29,7 +29,7 @@ SEEDS = [
     ("agentpoison-2024", "AgentPoison: Red-teaming LLM Agents via Poisoning Memory or Knowledge Bases", "2407.12784"),
     ("asb-2024", "Agent Security Bench (ASB): Formalizing and Benchmarking Attacks and Defenses in LLM-based Agents", "2410.02644"),
     ("agentharm-2024", "AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents", "2410.09024"),
-    ("progent-2025", "Progent: Programmable Privilege Control for LLM Agents", "2504.11703"),
+    ("progent-2025", "Progent: Securing AI Agents with Privilege Control", "2504.11703"),
     ("saga-2025", "SAGA: A Security Architecture for Governing AI Agentic Systems", "2504.21034"),
     ("mcp-attack-vectors-2025", "Beyond the Protocol: Unveiling Attack Vectors in the Model Context Protocol (MCP) Ecosystem", "2506.02040"),
     ("agentsight-2025", "AgentSight: System-Level Observability for AI Agents Using eBPF", "2508.02736"),
@@ -37,7 +37,7 @@ SEEDS = [
     ("skillopt-2026", "SkillOpt: Executive Strategy for Self-Evolving Agent Skills", "2605.23904"),
     ("mcp-tdp-2026", "When the Manual Lies: A Realistic Benchmark to Evaluate MCP Poisoning Attacks for LLM Agents", "2605.24069"),
     ("delegated-observability-2026", "Observability for Delegated Execution in Agentic AI Systems", "2606.09692"),
-    ("evidence-provenance-survey-2026", "A Survey of Evidence Tracing and Execution Provenance for LLM Agents", "2606.04990"),
+    ("evidence-provenance-survey-2026", "From Agent Traces to Trust: A Survey of Evidence Tracing and Execution Provenance in LLM Agents", "2606.04990"),
     ("agentic-investigations-2026", "Foundations for Agentic AI Investigations from the Forensic Analysis of OpenClaw", "2604.05589"),
     ("sentinelagent-2026", "SentinelAgent: Intent-Verified Delegation Chains for Securing Federal Multi-Agent AI Systems", "2604.02767"),
 ]
@@ -87,7 +87,7 @@ def request(url: str, source: str, purpose: str, query_id: str, seed_id: str = "
     error = ""
     for attempt in range(5):
         try:
-            headers = {"User-Agent": "agentic-ai-security-research-seed-pilot/1.3"}
+            headers = {"User-Agent": "agentic-ai-security-research-seed-pilot/1.3.1"}
             if source == "openalex":
                 headers["Authorization"] = f"Bearer {OPENALEX_API_KEY}"
             req = urllib.request.Request(url, headers=headers)
@@ -175,7 +175,7 @@ def openalex() -> list[dict[str, object]]:
             "index_check_date": "2026-08-21",
             "retrieved_by_qa": retrieval["qa"],
             "retrieved_by_qd": retrieval["qd"],
-            "query_version": "1.3-pilot",
+            "query_version": "1.3.1-pilot",
             "metadata_verified": "partial" if exact_ids else "unknown",
             "notes": f"openalex_ids={'|'.join(exact_ids)};qa={'|'.join(matched['qa'])};qd={'|'.join(matched['qd'])}",
         }
@@ -222,7 +222,7 @@ def arxiv() -> list[dict[str, object]]:
             "index_check_date": "2026-08-21",
             "retrieved_by_qa": str(arxiv_id in sets["qa"]).lower(),
             "retrieved_by_qd": str(arxiv_id in sets["qd"]).lower(),
-            "query_version": "1.3-pilot",
+            "query_version": "1.3.1-pilot",
             "metadata_verified": str(arxiv_id in sets["index"]).lower(),
             "notes": f"arxiv_id={arxiv_id}",
         })
