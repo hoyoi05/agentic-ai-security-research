@@ -33,6 +33,7 @@ nav:
       - 위협 모델: survey/threat-model.md
       - 연구 갭: survey/research-gaps.md
   - 문헌:
+      - 제목·초록 카탈로그: literature/title-abstracts.md
       - 검증 카탈로그: literature/catalog.md
   - 실험:
       - 연구 설계: experiments/design.md

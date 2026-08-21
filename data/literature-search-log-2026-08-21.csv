@@ -1,0 +1,6 @@
+date,source,query_or_resource,purpose,selected_records,notes
+2026-08-21,web-search,"site:arxiv.org/abs agentic AI security survey agents attacks defenses 2025 2026",broad-survey-discovery,4,"Primary arXiv pages checked"
+2026-08-21,web-search,"site:arxiv.org/abs LLM agent security benchmark prompt injection tool security AgentDojo InjecAgent ASB",benchmark-discovery,7,"Primary arXiv pages checked"
+2026-08-21,web-search,"site:nist.gov AI agent security identity authorization publication 2025 2026",government-guidance-discovery,1,"Official NIST CSRC page checked"
+2026-08-21,web-search,"site:owasp.org agentic AI security guide top 10 2025 2026",official-guide-discovery,3,"Official OWASP pages checked"
+2026-08-21,deduplication,"data/sources.yaml and data/seed-studies.yaml",repository-deduplication,15,"Excluded the six records already present in sources.yaml; overlap with seed-studies retained because this catalog adds abstract summaries and verification fields"
