@@ -1,15 +1,15 @@
 # 공개 검색원별 검색 전략
 
-> 버전: 1.2-pilot  
+> 버전: 1.3.1-pilot  
 > 작성일: 2026-08-21  
-> 파일럿 결과: arXiv 완료, OpenAlex 미완료  
-> 상태: arXiv core-security seed 기준 통과; OpenAlex rate-aware 재실행 필요
+> 파일럿 결과: arXiv·OpenAlex 완료  
+> 상태: 두 검색원 모두 core-security seed 기준 통과
 
 ## 원칙
 
 구독 계정이 필요한 Scopus, Web of Science와 IEEE Xplore는 현재 실행 검색원에서 제외합니다. 공개 API의 검색 문법과 coverage가 서로 다르므로 공통 개념 사전을 유지하면서 검색원별 query를 실행하고 합집합을 구성합니다.
 
-이 문서의 query v1.2는 arXiv seed-recall pilot에 적용했습니다. 실제 요청 URL, parameter, API 응답 시각, paging 상태와 결과 checksum은 검색 로그에 보존합니다. OpenAlex pilot은 HTTP 429로 완료되지 않았으므로 recall을 산출하지 않습니다.
+arXiv query v1.2와 OpenAlex query v1.3.1은 seed-recall pilot을 통과했습니다. 실제 요청 URL, parameter, API 응답 시각, paging 상태와 결과 checksum은 검색 로그에 보존합니다. OpenAlex API key는 Authorization 헤더로만 전달하고 로그에 기록하지 않습니다.
 
 ## 공통 개념 사전
 
@@ -201,7 +201,9 @@ NIST, IETF, W3C 등은 site-restricted targeted search와 공식 목록을 사�
 - arXiv query v1.1: 전체 seed 14/18 회수
 - arXiv query v1.2: 전체 seed 16/18, core-security seed 16/16 회수
 - contextual seed 2편은 보안 query 회수 분모에서 제외
-- OpenAlex: 30건의 HTTP 429로 index·query 검증이 불완전하여 recall 미산출
+- OpenAlex v1.2: indexed seed 4/16 회수; 인접 검색어의 암묵적 AND 문제 확인
+- OpenAlex v1.3.1: 전체 18/18, core-security 16/16 회수
+- 최종 OpenAlex 342건과 arXiv 3건 요청 모두 HTTP 200
 - API 실패는 false가 아니라 unknown 또는 not_tested로 기록
 
 세부 결과와 재현 파일은 [공개 검색원 seed-recall pilot](pilot-results.md)을 참조합니다.
@@ -209,13 +211,13 @@ NIST, IETF, W3C 등은 site-restricted targeted search와 공식 목록을 사�
 ## 실행 순서
 
 1. seed exact-title search로 각 검색원의 index presence 확인
-2. OpenAlex 18개 manifest query를 rate-aware 방식으로 재실행
+2. OpenAlex v1.3.1 manifest query를 full retrieval에 적용
 3. arXiv Q-A와 Q-D pilot
 4. Semantic Scholar 보조 query와 citation expansion
 5. DOI·publication status를 Crossref와 DBLP에서 정규화
 6. 합집합 구성과 study-family 중복 제거
 7. 제목·초록 pilot screening
-8. seed recall과 noise를 검토하여 query v1.2 고정 또는 변경
+8. OpenAlex v1.3.1과 arXiv v1.2의 noise를 검토하고 query 고정
 9. full retrieval
 10. backward·forward snowballing
 
