@@ -1,0 +1,102 @@
+schema_version: 1
+last_updated: 2026-08-21
+purpose: search-recall-validation
+studies:
+  - id: indirect-prompt-injection-2023
+    title: "Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection"
+    year: 2023
+    identifier: arXiv:2302.12173
+    url: https://arxiv.org/abs/2302.12173
+    domains: [goal-prompt-context, tool-security]
+    roles: [threat-model, attack]
+  - id: toolemu-2023
+    title: "Identifying the Risks of LM Agents with an LM-Emulated Sandbox"
+    year: 2023
+    identifier: arXiv:2309.15817
+    url: https://arxiv.org/abs/2309.15817
+    domains: [evaluation-benchmark, tool-security]
+    roles: [measurement, benchmark]
+  - id: injecagent-2024
+    title: "InjecAgent: Benchmarking Indirect Prompt Injections in Tool-Integrated Large Language Model Agents"
+    year: 2024
+    identifier: arXiv:2403.02691
+    url: https://arxiv.org/abs/2403.02691
+    domains: [goal-prompt-context, tool-security, evaluation-benchmark]
+    roles: [attack, benchmark]
+  - id: agentdojo-2024
+    title: "AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents"
+    year: 2024
+    identifier: arXiv:2406.13352
+    url: https://arxiv.org/abs/2406.13352
+    domains: [goal-prompt-context, tool-security, evaluation-benchmark]
+    roles: [attack, defense, benchmark]
+  - id: agentpoison-2024
+    title: "AgentPoison: Red-teaming LLM Agents via Poisoning Memory or Knowledge Bases"
+    year: 2024
+    identifier: arXiv:2407.12784
+    url: https://arxiv.org/abs/2407.12784
+    domains: [memory-knowledge-skill]
+    roles: [attack, evaluation]
+  - id: asb-2024
+    title: "Agent Security Bench (ASB): Formalizing and Benchmarking Attacks and Defenses in LLM-based Agents"
+    year: 2024
+    identifier: arXiv:2410.02644
+    url: https://arxiv.org/abs/2410.02644
+    domains: [evaluation-benchmark, memory-knowledge-skill, tool-security]
+    roles: [attack, defense, benchmark]
+  - id: agentharm-2024
+    title: "AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents"
+    year: 2024
+    identifier: arXiv:2410.09024
+    url: https://arxiv.org/abs/2410.09024
+    domains: [goal-prompt-context, evaluation-benchmark]
+    roles: [attack, benchmark]
+  - id: progent-2025
+    title: "Progent: Programmable Privilege Control for LLM Agents"
+    year: 2025
+    identifier: arXiv:2504.11703
+    url: https://arxiv.org/abs/2504.11703
+    domains: [identity-authorization, tool-security]
+    roles: [defense, evaluation]
+  - id: saga-2025
+    title: "SAGA: A Security Architecture for Governing AI Agentic Systems"
+    year: 2025
+    identifier: arXiv:2504.21034
+    url: https://arxiv.org/abs/2504.21034
+    domains: [identity-authorization, delegation-multi-agent]
+    roles: [defense, governance]
+  - id: mcp-attack-vectors-2025
+    title: "Beyond the Protocol: Unveiling Attack Vectors in the Model Context Protocol (MCP) Ecosystem"
+    year: 2025
+    identifier: arXiv:2506.02040
+    url: https://arxiv.org/abs/2506.02040
+    domains: [tool-mcp-supply-chain]
+    roles: [threat-model, attack, measurement]
+  - id: agentsight-2025
+    title: "AgentSight: System-Level Observability for AI Agents Using eBPF"
+    year: 2025
+    identifier: arXiv:2508.02736
+    url: https://arxiv.org/abs/2508.02736
+    domains: [runtime-provenance-forensics]
+    roles: [defense, measurement]
+  - id: prov-agent-2025
+    title: "PROV-AGENT: Unified Provenance for Tracking AI Agent Interactions in Agentic Workflows"
+    year: 2025
+    identifier: arXiv:2508.02866
+    url: https://arxiv.org/abs/2508.02866
+    domains: [runtime-provenance-forensics, delegation-multi-agent]
+    roles: [defense, measurement]
+  - id: skillopt-2026
+    title: "SkillOpt: Executive Strategy for Self-Evolving Agent Skills"
+    year: 2026
+    identifier: arXiv:2605.23904
+    url: https://arxiv.org/abs/2605.23904
+    domains: [memory-knowledge-skill]
+    roles: [measurement, evaluation]
+  - id: mcp-tdp-2026
+    title: "When the Manual Lies: A Realistic Benchmark to Evaluate MCP Poisoning Attacks for LLM Agents"
+    year: 2026
+    identifier: arXiv:2605.24069
+    url: https://arxiv.org/abs/2605.24069
+    domains: [tool-mcp-supply-chain, evaluation-benchmark]
+    roles: [attack, defense, benchmark]

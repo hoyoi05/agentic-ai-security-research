@@ -27,21 +27,22 @@
 
 보충 검색에서 발견된 자료는 최초 발견 경로를 기록하고 핵심 데이터베이스 결과와 혼합하기 전에 중복 제거합니다.
 
-## 3. 검색 개념 블록
+## 3. 검색 전략
 
-### A. Agentic system
+검색은 하나의 과도하게 제한적인 식이 아니라 다음 두 검색군의 합집합으로 수행합니다.
 
-`"AI agent*" OR "LLM agent*" OR "language model agent*" OR "agentic AI" OR "autonomous agent*" OR "tool-using agent*" OR "multi-agent system*"`
+- **Q-A — Threats and failures:** 공격, 취약점, 악용, poisoning, misuse와 보안 실패를 회수
+- **Q-D — Controls and operations:** 방어, 권한 통제, 관측, 포렌식, containment와 recovery를 회수
 
-### B. Security property or activity
+두 검색군 모두 같은 Agentic-system 개념 블록을 사용합니다. 각 데이터베이스에서 Q-A와 Q-D를 별도로 실행·내보낸 후 DOI, 식별자, 제목과 study family를 기준으로 중복 제거합니다. 이 방식은 단일 `A AND B AND C` 식에서 특정 공격 표면 용어가 없는 관련 연구가 누락되는 위험을 줄입니다.
 
-`secur* OR vulnerab* OR attack* OR threat* OR adversar* OR poison* OR backdoor* OR privacy OR authorization OR authentication OR provenance OR forensic* OR incident OR containment OR recovery OR rollback OR monitoring`
+데이터베이스별 실제 실행 문자열과 필터는 [데이터베이스 검색식](search-strategy.md)에 고정합니다. 검색 실행 전 seed set으로 다음을 분리 검증합니다.
 
-### C. Agent-specific surface
+1. 해당 seed study가 데이터베이스에 색인되어 있는가?
+2. 색인된 seed study를 Q-A 또는 Q-D가 회수하는가?
+3. 회수하지 못했다면 색인 문제, 검색어 문제, 필드 제한 문제 중 무엇인가?
 
-`prompt OR goal OR memory OR skill OR tool OR plugin OR MCP OR delegation OR identity OR credential OR runtime OR trajectory OR planning OR communication OR orchestration`
-
-초기 master query는 `A AND B AND C`로 구성합니다. 데이터베이스별 field restriction과 구문 길이는 검색 실행 시 변환하고, 실제 실행 문자열을 검색 로그에 원문 그대로 보존합니다. 검색 결과가 지나치게 제한되는지 확인하기 위해 알려진 seed study가 회수되는지를 사전 검증합니다.
+검색식 수정은 seed 회수율만 높이기 위한 제목 맞춤형 용어 추가를 피하고, 전체 개념의 동의어 또는 누락된 보안 영역을 보완하는 경우에만 허용합니다.
 
 ## 4. 포함 기준
 
