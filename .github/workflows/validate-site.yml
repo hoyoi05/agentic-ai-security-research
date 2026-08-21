@@ -2,10 +2,12 @@ name: Validate site
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
   workflow_dispatch:
 
 permissions:
   contents: read
+  pull-requests: read
 
 jobs:
   build:
@@ -13,6 +15,51 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Enforce public publication approval
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PUBLICATION_APPROVED: ${{ contains(github.event.pull_request.labels.*.name, 'publication-approved') }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          sensitive=()
+          mapfile -t changed_files < <(
+            git diff --name-only --diff-filter=AMR "${BASE_SHA}" "${HEAD_SHA}"
+          )
+
+          for path in "${changed_files[@]}"; do
+            case "${path}" in
+              agent-forensics-paper/*|paper/*|papers/*|manuscript/*|manuscripts/*|docs/paper/*|docs/papers/*|docs/manuscript/*|docs/manuscripts/*|docs/internal/*|docs/research/frida/*|docs/research/*/research-roadmap.md|docs/research/*/experiment-plan.md|docs/research/*/internal-notes.md)
+                sensitive+=("${path} (restricted path)")
+                ;;
+            esac
+
+            if [[ "${path}" == docs/*.md || "${path}" == docs/**/*.md ]]; then
+              added_lines="$(
+                git diff --unified=0 "${BASE_SHA}" "${HEAD_SHA}" -- "${path}" |
+                  awk '/^\+\+\+ / { next } /^\+/ { sub(/^\+/, ""); print }'
+              )"
+              if grep -Eiq 'unverified.{0,12}hypothes|internal.{0,12}decision.{0,12}log|pre-submission|paper.{0,8}roadmap|detailed.{0,8}threat model|internal.{0,8}experiment notes|미검증.{0,12}가설|내부.{0,12}(결정|의사결정).{0,12}(로그|기록)|투고 전.{0,12}(분석|결과)|논문.{0,8}(실험|작성).{0,8}로드맵|상세.{0,8}(실험|위협 모델).{0,8}(설계|계획)' <<<"${added_lines}"; then
+                sensitive+=("${path} (sensitive research-design content)")
+              fi
+            fi
+          done
+
+          if (( ${#sensitive[@]} > 0 )) && [[ "${PUBLICATION_APPROVED}" != "true" ]]; then
+            echo "::error::Publication approval is required for research-design or manuscript content."
+            printf ' - %s\n' "${sensitive[@]}"
+            echo "A repository maintainer must add the publication-approved label after confirming intentional public release."
+            exit 1
+          fi
+
+          echo "Public publication approval gate passed."
+
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
