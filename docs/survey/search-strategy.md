@@ -1,199 +1,216 @@
-# 데이터베이스별 검색 전략
+# 공개 검색원별 검색 전략
 
-> 버전: 1.0-draft  
+> 버전: 1.1-draft  
 > 작성일: 2026-08-21  
-> 실제 검색 결과 수: 미기록
+> 실제 검색 결과 수: 미기록  
+> 상태: query manifest pilot 실행 전
 
-## 공통 설계
+## 원칙
 
-검색 결과는 Q-A와 Q-D의 합집합입니다. 데이터베이스마다 같은 개념을 유지하고 필드 문법과 wildcard 제약만 변환합니다.
+구독 계정이 필요한 Scopus, Web of Science와 IEEE Xplore는 현재 실행 검색원에서 제외합니다. 공개 API의 검색 문법과 coverage가 서로 다르므로 공통 개념 사전을 유지하면서 검색원별 query를 실행하고 합집합을 구성합니다.
 
-### Agentic-system 블록
+이 문서의 query는 실행 전 초안입니다. 실제 요청 URL, parameter, API 응답 시각, paging 상태와 결과 checksum을 검색 로그에 보존합니다.
 
-- AI agent
-- LLM agent
-- large language model agent
-- language model agent
-- agentic AI
-- tool-using agent
-- autonomous agent
+## 공통 개념 사전
 
-### Q-A: Threats and failures
+### Agent 표현
 
-security, vulnerability, attack, threat, adversarial, prompt injection, poisoning, backdoor, jailbreak, misuse, harm, privacy, compromise
+- "AI agent"
+- "LLM agent"
+- "large language model agent"
+- "language model agent"
+- "agentic AI"
+- "tool-using agent"
+- "autonomous agent"
 
-### Q-D: Controls and operations
+전통적 multi-agent system의 대량 유입을 줄이기 위해 독립된 "multi-agent system"은 초기 Agent 표현에서 제외합니다. LLM 또는 agentic 표현이 함께 나타나는 multi-agent 연구와 snowballing 결과는 포함 가능합니다.
 
-defense, safeguard, monitoring, detection, authorization, authentication, access control, privilege, provenance, forensics, audit, containment, recovery, rollback, isolation, sandbox
+### Q-A — Threats and failures
 
-일반적인 `multi-agent system`은 전통적 MAS 문헌의 대량 유입을 방지하기 위해 Agentic-system 블록에서 제외합니다. LLM 또는 Agentic AI와 연결된 multi-agent 연구는 위 용어를 함께 포함하므로 회수할 수 있고, 추가 문헌은 snowballing으로 보완합니다.
+security, attack, vulnerability, threat, adversarial, prompt injection, poisoning, backdoor, jailbreak, misuse, compromise, privacy
 
-## Scopus
+### Q-D — Controls and operations
 
-Scopus Advanced Search의 제목·초록·키워드 결합 필드인 `TITLE-ABS-KEY`를 사용합니다. 공식 필드 설명은 [Scopus Advanced Search 도움말](https://service.elsevier.com/app/answers/detail/a_id/11365/supporthub/scopus/)에서 확인합니다.
+security, defense, authentication, authorization, identity, credential, access control, privilege, delegation, provenance, observability, monitoring, audit, forensic, containment, recovery, rollback, sandbox
 
-### SCOPUS-QA
+## Query manifest
 
-```text
-TITLE-ABS-KEY(
-  (
-    "AI agent*" OR "LLM agent*" OR "large language model agent*" OR
-    "language model agent*" OR "agentic AI" OR "tool-using agent*" OR
-    "autonomous agent*"
-  )
-  AND
-  (
-    secur* OR vulnerab* OR attack* OR threat* OR adversar* OR
-    "prompt injection" OR poison* OR backdoor* OR jailbreak* OR
-    misuse OR harm* OR privacy OR compromis*
-  )
-)
-AND PUBYEAR > 2021
-AND PUBYEAR < 2027
-```
+공개 검색원에서 하나의 거대한 Boolean query에 의존하지 않습니다. 각 Agent 표현에 다음 두 suffix를 결합한 14개 검색 실행을 기본 manifest로 사용합니다.
 
-### SCOPUS-QD
+- QA suffix: security attack vulnerability threat poisoning "prompt injection"
+- QD suffix: security defense authorization authentication delegation provenance forensic monitoring
 
-```text
-TITLE-ABS-KEY(
-  (
-    "AI agent*" OR "LLM agent*" OR "large language model agent*" OR
-    "language model agent*" OR "agentic AI" OR "tool-using agent*" OR
-    "autonomous agent*"
-  )
-  AND
-  (
-    defen* OR safeguard* OR monitor* OR detect* OR authorization OR
-    authentication OR "access control" OR privilege* OR provenance OR
-    forensic* OR audit* OR containment OR recovery OR rollback OR
-    isolation OR sandbox*
-  )
-)
-AND PUBYEAR > 2021
-AND PUBYEAR < 2027
-```
+예:
 
-실행 후 document type은 article, conference paper, review로 필터링합니다. 언어는 검색 단계에서 제한하지 않고 스크리닝 단계에서 판정합니다.
+- "AI agent" security attack vulnerability threat poisoning "prompt injection"
+- "AI agent" security defense authorization authentication delegation provenance forensic monitoring
+- "LLM agent" security attack vulnerability threat poisoning "prompt injection"
+- "LLM agent" security defense authorization authentication delegation provenance forensic monitoring
 
-## Web of Science Core Collection
+실제 URL encoding 전의 raw query와 encoding 후 요청 URL을 모두 기록합니다. 검색원이 따옴표나 Boolean 의미를 동일하게 처리한다고 가정하지 않습니다.
 
-Advanced Search의 Topic 필드 `TS=`를 사용합니다. Topic은 title, abstract, author keywords와 Keywords Plus를 검색합니다. 실제 검색 시 Web of Science Core Collection을 collection으로 기록합니다.
+## OpenAlex
 
-### WOS-QA
+### 역할
 
-```text
-TS=(
-  (
-    "AI agent*" OR "LLM agent*" OR "large language model agent*" OR
-    "language model agent*" OR "agentic AI" OR "tool-using agent*" OR
-    "autonomous agent*"
-  )
-  AND
-  (
-    secur* OR vulnerab* OR attack* OR threat* OR adversar* OR
-    "prompt injection" OR poison* OR backdoor* OR jailbreak* OR
-    misuse OR harm* OR privacy OR compromis*
-  )
-)
-AND PY=(2022-2026)
-```
+- 핵심 metadata discovery
+- publication year와 type 기반 필터
+- DOI, OpenAlex ID와 citation graph 획득
+- seed index presence 확인
 
-### WOS-QD
+### 요청 형태
 
-```text
-TS=(
-  (
-    "AI agent*" OR "LLM agent*" OR "large language model agent*" OR
-    "language model agent*" OR "agentic AI" OR "tool-using agent*" OR
-    "autonomous agent*"
-  )
-  AND
-  (
-    defen* OR safeguard* OR monitor* OR detect* OR authorization OR
-    authentication OR "access control" OR privilege* OR provenance OR
-    forensic* OR audit* OR containment OR recovery OR rollback OR
-    isolation OR sandbox*
-  )
-)
-AND PY=(2022-2026)
-```
+    GET https://api.openalex.org/works
+      ?search=<RAW_QUERY>
+      &filter=from_publication_date:2022-01-01,to_publication_date:<SEARCH_DATE>
+      &cursor=*
+      &per-page=<PAGE_SIZE>
 
-실행 후 document type은 article, proceedings paper, review article로 필터링합니다. 실제 인터페이스에서 허용되는 인용부호와 wildcard를 확인하고, 수정이 필요하면 실행 문자열을 검색 로그에 그대로 저장합니다.
+OpenAlex 검색의 ranking을 Boolean 완전 일치로 해석하지 않습니다. 14개 manifest query를 각각 실행하고 모든 cursor page를 수집한 뒤, 포함·제외 기준은 별도 screening에서 적용합니다.
 
-## IEEE Xplore
+기록 필드:
 
-[IEEE Xplore Command Search](https://ieeexplore.ieee.org/Xplorehelp/searching-ieee-xplore/command-search)의 `All Metadata` 필드를 사용합니다. IEEE Xplore는 clause당 검색어 수와 wildcard 사용에 제약이 있으므로 wildcard 대신 기본형을 사용하고, Q-A와 Q-D를 분리합니다.
+- raw query와 encoded URL
+- API access mode와 version 또는 문서 확인일
+- search date와 date filter
+- cursor page 수와 total result count
+- work ID, DOI, title, abstract availability, year, type
+- referenced and citing work identifiers
+- raw response checksum
 
-### IEEE-QA
+공식 API 문서는 [OpenAlex Help Center](https://help.openalex.org/)에서 확인합니다.
 
-```text
-(
-  ("All Metadata":"AI agent") OR
-  ("All Metadata":"LLM agent") OR
-  ("All Metadata":"large language model agent") OR
-  ("All Metadata":"language model agent") OR
-  ("All Metadata":"agentic AI") OR
-  ("All Metadata":"tool-using agent") OR
-  ("All Metadata":"autonomous agent")
-)
-AND
-(
-  ("All Metadata":security) OR
-  ("All Metadata":vulnerability) OR
-  ("All Metadata":attack) OR
-  ("All Metadata":threat) OR
-  ("All Metadata":adversarial) OR
-  ("All Metadata":"prompt injection") OR
-  ("All Metadata":poisoning) OR
-  ("All Metadata":backdoor) OR
-  ("All Metadata":jailbreak) OR
-  ("All Metadata":misuse) OR
-  ("All Metadata":harm) OR
-  ("All Metadata":privacy) OR
-  ("All Metadata":compromise)
-)
-```
+## arXiv API
 
-### IEEE-QD
+### 역할
 
-```text
-(
-  ("All Metadata":"AI agent") OR
-  ("All Metadata":"LLM agent") OR
-  ("All Metadata":"large language model agent") OR
-  ("All Metadata":"language model agent") OR
-  ("All Metadata":"agentic AI") OR
-  ("All Metadata":"tool-using agent") OR
-  ("All Metadata":"autonomous agent")
-)
-AND
-(
-  ("All Metadata":defense) OR
-  ("All Metadata":safeguard) OR
-  ("All Metadata":monitoring) OR
-  ("All Metadata":detection) OR
-  ("All Metadata":authorization) OR
-  ("All Metadata":authentication) OR
-  ("All Metadata":"access control") OR
-  ("All Metadata":privilege) OR
-  ("All Metadata":provenance) OR
-  ("All Metadata":forensics) OR
-  ("All Metadata":audit) OR
-  ("All Metadata":containment) OR
-  ("All Metadata":recovery) OR
-  ("All Metadata":rollback) OR
-  ("All Metadata":isolation) OR
-  ("All Metadata":sandbox)
-)
-```
+- 최신 Agentic AI security preprint 발견
+- 제목·초록 Boolean query
+- arXiv ID와 version metadata 확인
 
-Command Search 실행 후 publication year 2022–2026, content type Journals와 Conferences를 적용합니다. IEEE 공식 도움말은 Command Search가 자유 형식 Boolean query, proximity operator와 clause당 최대 25개 검색어를 지원한다고 설명합니다.
+### Q-A
 
-## 실행 및 변경 규칙
+    (
+      all:"AI agent" OR all:"LLM agent" OR
+      all:"large language model agent" OR all:"language model agent" OR
+      all:"agentic AI" OR all:"tool-using agent" OR all:"autonomous agent"
+    )
+    AND
+    (
+      all:security OR all:attack OR all:vulnerability OR all:threat OR
+      all:adversarial OR all:"prompt injection" OR all:poisoning OR
+      all:backdoor OR all:jailbreak OR all:misuse OR all:compromise OR all:privacy
+    )
 
-1. 각 식을 별도 search run ID로 실행합니다.
-2. 실제 입력한 query, UI filter, 검색일, 결과 수와 export 파일을 `data/search-log.csv`에 기록합니다.
-3. 두 검색군과 세 데이터베이스의 결과를 합친 후 중복 제거합니다.
-4. seed 누락이 발생하면 먼저 색인 여부를 제목 검색으로 확인합니다.
-5. 검색어 수정 전후의 결과 수와 seed recall 변화를 모두 보존합니다.
-6. 실제 검색 이후에는 이 문서를 `executed` 상태로 변경하고 검색식 버전을 고정합니다.
+### Q-D
+
+    (
+      all:"AI agent" OR all:"LLM agent" OR
+      all:"large language model agent" OR all:"language model agent" OR
+      all:"agentic AI" OR all:"tool-using agent" OR all:"autonomous agent"
+    )
+    AND
+    (
+      all:security OR all:defense OR all:authentication OR all:authorization OR
+      all:identity OR all:credential OR all:"access control" OR all:privilege OR
+      all:delegation OR all:provenance OR all:observability OR all:monitoring OR
+      all:audit OR all:forensic OR all:containment OR all:recovery OR
+      all:rollback OR all:sandbox
+    )
+
+요청은 https://export.arxiv.org/api/query 의 search_query, start, max_results, sortBy와 sortOrder를 기록합니다. 결과는 Atom feed로 저장합니다. 연도 범위는 반환된 submitted date로 재확인하며 2022년 이전 자료는 직접 선행연구일 때 snowballing 후보로 분리합니다.
+
+공식 [arXiv API User's Manual](https://info.arxiv.org/help/api/user-manual.html)의 paging과 요청 간격 지침을 따릅니다.
+
+## Semantic Scholar Academic Graph API
+
+### 역할
+
+- OpenAlex·arXiv 결과의 보조 발견
+- seed paper identifier 확인
+- reference와 citation expansion
+- title·abstract·venue metadata 보완
+
+/graph/v1/paper/search/bulk 또는 실행 시점에 공식 문서가 권고하는 bulk search endpoint를 사용합니다. 14개 query manifest를 동일하게 기록하되 검색 문법이 다른 검색원과 동일한 recall을 보장한다고 가정하지 않습니다.
+
+공식 [Semantic Scholar API documentation](https://api.semanticscholar.org/api-docs/)에서 endpoint, field, paging, rate limit과 인증 요구를 실행 당일 확인합니다.
+
+## Crossref REST API
+
+### 역할
+
+Crossref는 복합 보안 검색의 핵심 recall source가 아니라 DOI와 출판 메타데이터 정규화에 사용합니다.
+
+- DOI 직접 조회: /works/{doi}
+- 제목·저자 확인: /works?query.bibliographic=<citation>
+- 날짜 검증: filter=from-pub-date:<date>,until-pub-date:<date>
+
+Crossref query 결과를 Boolean 완전 일치로 해석하지 않습니다. 공식 문서는 공개 REST API가 search, filter와 JSON metadata retrieval을 지원한다고 설명합니다.
+
+- [Crossref REST API](https://www.crossref.org/documentation/retrieve-metadata/rest-api/)
+- [Crossref filters](https://www.crossref.org/documentation/retrieve-metadata/rest-api/rest-api-filters/)
+
+## DBLP
+
+### 역할
+
+- 컴퓨터과학 publication record 확인
+- conference·journal venue와 final title 검증
+- preprint와 정식 출판본 연결 후보 발견
+
+Publication Search API:
+
+    GET https://dblp.org/search/publ/api
+      ?q=<TITLE_OR_QUERY>
+      &format=json
+      &h=<HITS>
+      &f=<OFFSET>
+      &c=0
+
+DBLP 공식 문서는 q, format, 최대 hit 수 h, offset f를 설명하며 결과 수 제한을 명시합니다. 따라서 DBLP는 전체 recall source보다 publication verification과 targeted search에 사용합니다.
+
+공식 문서: [DBLP Search API](https://dblp.org/faq/How+to+use+the+dblp+search+API.html)
+
+## 공식 표준 및 정부 자료
+
+NIST, IETF, W3C 등은 site-restricted targeted search와 공식 목록을 사용합니다. 각 자료에는 다음을 기록합니다.
+
+- issuing organization
+- document identifier와 version
+- publication 또는 update date
+- status: final, draft, concept paper 등
+- superseded 또는 expired 여부
+- official URL
+
+표준·정부 자료는 peer-reviewed 학술 논문과 별도 분석합니다.
+
+## Snowballing
+
+포함 후보의 reference와 citation을 이용합니다.
+
+- backward: 참고문헌에서 직접 선행연구 확인
+- forward: OpenAlex 또는 Semantic Scholar citation graph로 후속 연구 확인
+- verification: 발견 레코드를 Crossref, DBLP, arXiv 또는 공식 출판 페이지에서 확인
+
+각 snowballing round, parent study와 발견 수를 기록하고 새로운 포함 후보가 없을 때 종료합니다.
+
+## 실행 순서
+
+1. seed exact-title search로 각 검색원의 index presence 확인
+2. OpenAlex 14개 manifest query pilot
+3. arXiv Q-A와 Q-D pilot
+4. Semantic Scholar 보조 query와 citation expansion
+5. DOI·publication status를 Crossref와 DBLP에서 정규화
+6. 합집합 구성과 study-family 중복 제거
+7. 제목·초록 pilot screening
+8. seed recall과 noise를 검토하여 query v1.1 고정 또는 변경
+9. full retrieval
+10. backward·forward snowballing
+
+## 검색 변경 규칙
+
+- 특정 seed 제목에만 나타나는 고유 단어 추가 금지
+- 개념 사전 변경 전후 query version, 결과 수와 recall 보존
+- API 정책·문법 변경은 protocol deviation으로 기록
+- 검색 오류와 rate-limit 재시도도 search log에 기록
+- raw export는 수정하지 않고 정규화 결과를 별도 파일로 생성
