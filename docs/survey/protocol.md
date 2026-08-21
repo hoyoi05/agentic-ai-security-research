@@ -1,0 +1,124 @@
+# 체계적 매핑 연구 프로토콜
+
+> 프로토콜 버전: 1.0-draft  
+> 기준일: 2026-08-21  
+> 상태: 데이터베이스 검색 전
+
+## 1. 프로토콜 관리
+
+검색을 실행하기 전에 연구 질문, 검색 범위, 포함·제외 기준과 필수 코딩 필드를 고정합니다. 이후 변경은 삭제·덮어쓰기하지 않고 변경 사유, 날짜, 영향받는 검색 또는 문헌 집합을 기록합니다.
+
+## 2. 검색원
+
+### 핵심 학술 데이터베이스
+
+- Scopus
+- Web of Science Core Collection
+- IEEE Xplore
+
+세 데이터베이스는 같은 검색 기준일 범위에서 병렬로 검색하며, 데이터베이스별 문법 차이만 조정합니다.
+
+### 보충 검색
+
+- 포함 연구의 backward·forward snowballing
+- ACM Digital Library의 누락 확인
+- arXiv의 최신 preprint 확인
+- 공식 표준·정부·비영리 보안기관 문서 확인
+
+보충 검색에서 발견된 자료는 최초 발견 경로를 기록하고 핵심 데이터베이스 결과와 혼합하기 전에 중복 제거합니다.
+
+## 3. 검색 개념 블록
+
+### A. Agentic system
+
+`"AI agent*" OR "LLM agent*" OR "language model agent*" OR "agentic AI" OR "autonomous agent*" OR "tool-using agent*" OR "multi-agent system*"`
+
+### B. Security property or activity
+
+`secur* OR vulnerab* OR attack* OR threat* OR adversar* OR poison* OR backdoor* OR privacy OR authorization OR authentication OR provenance OR forensic* OR incident OR containment OR recovery OR rollback OR monitoring`
+
+### C. Agent-specific surface
+
+`prompt OR goal OR memory OR skill OR tool OR plugin OR MCP OR delegation OR identity OR credential OR runtime OR trajectory OR planning OR communication OR orchestration`
+
+초기 master query는 `A AND B AND C`로 구성합니다. 데이터베이스별 field restriction과 구문 길이는 검색 실행 시 변환하고, 실제 실행 문자열을 검색 로그에 원문 그대로 보존합니다. 검색 결과가 지나치게 제한되는지 확인하기 위해 알려진 seed study가 회수되는지를 사전 검증합니다.
+
+## 4. 포함 기준
+
+다음을 모두 만족하는 자료를 포함합니다.
+
+1. Agentic AI 또는 LLM 기반 Agent가 핵심 연구 대상이다.
+2. 보안·프라이버시 문제, 공격, 방어, 평가 또는 보안 운영을 명시적으로 다룬다.
+3. Agent의 자율적 의사결정, 상태, 도구, 권한, 위임 또는 실제 시스템 효과 중 하나 이상을 분석한다.
+4. 제목과 초록 또는 전문을 확인할 수 있다.
+5. 중복 출판인 경우 가장 완전한 버전을 대표 레코드로 선택할 수 있다.
+
+## 5. 제외 기준
+
+- 일반적인 LLM jailbreak·prompt injection만 다루고 Agent 행동이나 시스템 효과를 분석하지 않음
+- Agentic AI와 직접 연결되지 않은 전통적 MAS 보안
+- 보안 주장 없이 성능·정확도·효율만 평가
+- 초록, 발표 슬라이드 또는 홍보문만 존재하여 연구 방법을 판단할 수 없음
+- 영어 또는 한국어 이외의 자료로서 신뢰할 수 있는 전문 검토가 불가능함
+- 철회되었거나 출처·저자를 확인할 수 없음
+
+제외 시 최초로 적용된 하나의 주 제외 사유를 기록합니다.
+
+## 6. 중복 제거
+
+1. DOI 정규화 및 완전 일치
+2. arXiv ID, 표준 문서 번호 또는 공식 URL 일치
+3. 정규화한 제목과 제1저자·연도 비교
+4. preprint와 출판본 연결
+5. 수동 검토가 필요한 유사 레코드 표시
+
+preprint와 peer-reviewed 버전은 하나의 study family로 연결하되, 출판 상태와 아티팩트 차이는 보존합니다.
+
+## 7. 스크리닝
+
+### 1단계: 제목·초록
+
+포함, 제외, 불확실로 판정합니다. 불확실 레코드는 전문 단계로 전달합니다.
+
+### 2단계: 전문
+
+모든 포함 기준과 제외 기준을 다시 적용하고, 제외 자료에는 표준화된 사유를 부여합니다.
+
+### 품질 관리
+
+- 판정 기준이 변경되면 이미 검토한 레코드에 소급 적용
+- 경계 사례와 최종 결정 근거를 decision log에 기록
+- 단일 검토로 진행할 때는 무작위 표본을 일정 기간 후 재판정하여 intra-rater consistency를 확인
+- 공동 검토자가 참여하면 중복 표본의 agreement와 불일치를 기록
+
+## 8. 데이터 추출
+
+포함 문헌에는 다음 필드군을 코딩합니다.
+
+- 서지 및 발견 경로
+- 연구 역할과 보안 수명주기
+- 공격자, 보호 자산, 공격 표면과 신뢰 경계
+- Agent 아키텍처, 프레임워크, 모델, 도구와 배포 환경
+- 공격·방어 방법과 실제 시스템 효과
+- 데이터셋, benchmark, baseline, 지표와 실험 반복
+- 코드·데이터·trace 공개 여부
+- evidence status와 reproduction status
+- 한계, 위협 요인, 연구 갭 후보
+
+구체적인 허용 값과 다중 코딩 규칙은 코딩 프레임워크를 따릅니다.
+
+## 9. 분석 계획
+
+- 연도·publication type·연구 역할별 빈도
+- 보안 영역 × 시스템 계층 evidence map
+- 공격 수명주기 × 방어 수명주기 coverage
+- 평가 환경·데이터셋·지표의 사용 분포
+- 아티팩트 공개와 재현 상태 분포
+- 연구 밀도, 실증 성숙도, 재현 가능성을 결합한 gap matrix
+- RQ7 후보의 신규성, 실험 가능성, 기존 역량 적합성과 예상 기여 비교
+
+연구 수가 적은 영역을 자동으로 연구 갭으로 단정하지 않습니다. 실제 중요성, 기존 연구의 질, 실증 가능성, 인접 분야의 해결 여부를 함께 검토합니다.
+
+## 10. 보고
+
+검색·중복 제거·스크리닝 흐름은 PRISMA 형태의 수치로 보고합니다. 최종 보고에는 검색일, 실제 검색식, 데이터베이스별 결과 수, 중복 수, 단계별 제외 수와 제외 사유를 포함합니다.
