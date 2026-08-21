@@ -1,0 +1,55 @@
+seed_id,source,source_role,index_presence,index_check_method,index_check_date,retrieved_by_qa,retrieved_by_qd,query_version,metadata_verified,notes
+indirect-prompt-injection-2023,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,unknown,1.1-pilot,partial,openalex_ids=https://openalex.org/W4388886073|https://openalex.org/W4321855128;qa=oa-qa-01|oa-qa-02|oa-qa-07;qd=;failed_requests=3
+toolemu-2023,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,false,unknown,1.1-pilot,partial,openalex_ids=https://openalex.org/W4387164935;qa=;qd=;failed_requests=3
+injecagent-2024,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,false,unknown,1.1-pilot,partial,openalex_ids=https://openalex.org/W4402670146|https://openalex.org/W4392538073;qa=;qd=;failed_requests=3
+agentdojo-2024,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,false,unknown,1.1-pilot,partial,openalex_ids=https://openalex.org/W4415796822;qa=;qd=;failed_requests=3
+agentpoison-2024,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,false,unknown,1.1-pilot,partial,openalex_ids=https://openalex.org/W4415800619|https://openalex.org/W4403781307;qa=;qd=;failed_requests=3
+asb-2024,openalex,core-discovery,true,title.search exact normalized title,2026-08-21,true,unknown,1.1-pilot,partial,openalex_ids=https://openalex.org/W4403884175;qa=oa-qa-01|oa-qa-02|oa-qa-03|oa-qa-04;qd=;failed_requests=3
+agentharm-2024,openalex,core-discovery,unknown,title.search exact normalized title,2026-08-21,not_tested,not_tested,1.1-pilot,unknown,openalex_ids=;qa=;qd=
+progent-2025,openalex,core-discovery,unknown,title.search exact normalized title,2026-08-21,not_tested,not_tested,1.1-pilot,unknown,openalex_ids=;qa=;qd=
+saga-2025,openalex,core-discovery,unknown,title.search exact normalized title,2026-08-21,not_tested,not_tested,1.1-pilot,unknown,openalex_ids=;qa=;qd=
+mcp-attack-vectors-2025,openalex,core-discovery,unknown,title.search exact normalized title,2026-08-21,not_tested,not_tested,1.1-pilot,unknown,openalex_ids=;qa=;qd=
+agentsight-2025,openalex,core-discovery,unknown,title.search exact normalized title,2026-08-21,not_tested,not_tested,1.1-pilot,unknown,openalex_ids=;qa=;qd=
+prov-agent-2025,openalex,core-discovery,unknown,title.search exact normalized title,2026-08-21,not_tested,not_tested,1.1-pilot,unknown,openalex_ids=;qa=;qd=
+skillopt-2026,openalex,core-discovery,unknown,title.search exact normalized title,2026-08-21,not_tested,not_tested,1.1-pilot,unknown,openalex_ids=;qa=;qd=
+mcp-tdp-2026,openalex,core-discovery,unknown,title.search exact normalized title,2026-08-21,not_tested,not_tested,1.1-pilot,unknown,openalex_ids=;qa=;qd=
+delegated-observability-2026,openalex,core-discovery,unknown,title.search exact normalized title,2026-08-21,not_tested,not_tested,1.1-pilot,unknown,openalex_ids=;qa=;qd=
+evidence-provenance-survey-2026,openalex,core-discovery,unknown,title.search exact normalized title,2026-08-21,not_tested,not_tested,1.1-pilot,unknown,openalex_ids=;qa=;qd=
+agentic-investigations-2026,openalex,core-discovery,unknown,title.search exact normalized title,2026-08-21,not_tested,not_tested,1.1-pilot,unknown,openalex_ids=;qa=;qd=
+sentinelagent-2026,openalex,core-discovery,unknown,title.search exact normalized title,2026-08-21,not_tested,not_tested,1.1-pilot,unknown,openalex_ids=;qa=;qd=
+indirect-prompt-injection-2023,arxiv,core-preprint,true,id_list,2026-08-21,false,false,1.1-pilot,true,arxiv_id=2302.12173
+toolemu-2023,arxiv,core-preprint,true,id_list,2026-08-21,false,false,1.1-pilot,true,arxiv_id=2309.15817
+injecagent-2024,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.1-pilot,true,arxiv_id=2403.02691
+agentdojo-2024,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.1-pilot,true,arxiv_id=2406.13352
+agentpoison-2024,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.1-pilot,true,arxiv_id=2407.12784
+asb-2024,arxiv,core-preprint,true,id_list,2026-08-21,false,false,1.1-pilot,true,arxiv_id=2410.02644
+agentharm-2024,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.1-pilot,true,arxiv_id=2410.09024
+progent-2025,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.1-pilot,true,arxiv_id=2504.11703
+saga-2025,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.1-pilot,true,arxiv_id=2504.21034
+mcp-attack-vectors-2025,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.1-pilot,true,arxiv_id=2506.02040
+agentsight-2025,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.1-pilot,true,arxiv_id=2508.02736
+prov-agent-2025,arxiv,core-preprint,true,id_list,2026-08-21,false,true,1.1-pilot,true,arxiv_id=2508.02866
+skillopt-2026,arxiv,core-preprint,true,id_list,2026-08-21,false,false,1.1-pilot,true,arxiv_id=2605.23904
+mcp-tdp-2026,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.1-pilot,true,arxiv_id=2605.24069
+delegated-observability-2026,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.1-pilot,true,arxiv_id=2606.09692
+evidence-provenance-survey-2026,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.1-pilot,true,arxiv_id=2606.04990
+agentic-investigations-2026,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.1-pilot,true,arxiv_id=2604.05589
+sentinelagent-2026,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.1-pilot,true,arxiv_id=2604.02767
+indirect-prompt-injection-2023,arxiv,core-preprint,true,id_list,2026-08-21,false,false,1.2-pilot,true,arxiv_id=2302.12173;seed_role=contextual
+toolemu-2023,arxiv,core-preprint,true,id_list,2026-08-21,false,true,1.2-pilot,true,arxiv_id=2309.15817;seed_role=core-security
+injecagent-2024,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.2-pilot,true,arxiv_id=2403.02691;seed_role=core-security
+agentdojo-2024,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.2-pilot,true,arxiv_id=2406.13352;seed_role=core-security
+agentpoison-2024,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.2-pilot,true,arxiv_id=2407.12784;seed_role=core-security
+asb-2024,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.2-pilot,true,arxiv_id=2410.02644;seed_role=core-security
+agentharm-2024,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.2-pilot,true,arxiv_id=2410.09024;seed_role=core-security
+progent-2025,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.2-pilot,true,arxiv_id=2504.11703;seed_role=core-security
+saga-2025,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.2-pilot,true,arxiv_id=2504.21034;seed_role=core-security
+mcp-attack-vectors-2025,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.2-pilot,true,arxiv_id=2506.02040;seed_role=core-security
+agentsight-2025,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.2-pilot,true,arxiv_id=2508.02736;seed_role=core-security
+prov-agent-2025,arxiv,core-preprint,true,id_list,2026-08-21,false,true,1.2-pilot,true,arxiv_id=2508.02866;seed_role=core-security
+skillopt-2026,arxiv,core-preprint,true,id_list,2026-08-21,false,false,1.2-pilot,true,arxiv_id=2605.23904;seed_role=contextual
+mcp-tdp-2026,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.2-pilot,true,arxiv_id=2605.24069;seed_role=core-security
+delegated-observability-2026,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.2-pilot,true,arxiv_id=2606.09692;seed_role=core-security
+evidence-provenance-survey-2026,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.2-pilot,true,arxiv_id=2606.04990;seed_role=core-security
+agentic-investigations-2026,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.2-pilot,true,arxiv_id=2604.05589;seed_role=core-security
+sentinelagent-2026,arxiv,core-preprint,true,id_list,2026-08-21,true,true,1.2-pilot,true,arxiv_id=2604.02767;seed_role=core-security

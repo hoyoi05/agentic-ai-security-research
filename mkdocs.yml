@@ -33,6 +33,7 @@ nav:
       - SMS 프로토콜: survey/protocol.md
       - 공개 검색원 전략: survey/search-strategy.md
       - Seed 회수 검증: survey/seed-validation.md
+      - Pilot 결과: survey/pilot-results.md
       - 코딩 프레임워크: survey/coding-framework.md
       - 위협 모델: survey/threat-model.md
       - 연구 갭: survey/research-gaps.md

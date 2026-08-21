@@ -1,8 +1,13 @@
 schema_version: 1.1
 last_updated: 2026-08-21
 purpose: search-recall-validation
+defaults:
+  seed_role: core-security
+  expected_query_retrieval: true
 studies:
   - id: indirect-prompt-injection-2023
+    seed_role: contextual
+    expected_query_retrieval: false
     title: "Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection"
     year: 2023
     identifier: arXiv:2302.12173
@@ -87,6 +92,8 @@ studies:
     domains: [runtime-provenance-forensics, delegation-multi-agent]
     roles: [defense, measurement]
   - id: skillopt-2026
+    seed_role: contextual
+    expected_query_retrieval: false
     title: "SkillOpt: Executive Strategy for Self-Evolving Agent Skills"
     year: 2026
     identifier: arXiv:2605.23904

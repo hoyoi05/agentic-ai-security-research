@@ -10,7 +10,14 @@ Seed set은 최종 포함 문헌 목록이 아니라 검색 전략의 알려진 
 2. **Query retrieval:** Q-A 또는 Q-D 실행 결과에 포함되는가?
 3. **Metadata verification:** 저자, 연도, identifier와 publication status가 권위 있는 원본과 일치하는가?
 
-색인되지 않은 seed는 query false negative로 계산하지 않습니다. 색인되었으나 어떤 query에서도 회수되지 않을 때만 검색어, field, date filter 또는 검색원 coverage를 검토합니다.
+색인되지 않은 seed는 query false negative로 계산하지 않습니다. API 실패와 rate limit은 false가 아니라 `unknown` 또는 `not_tested`로 기록합니다. 색인이 확인되었으나 어떤 query에서도 회수되지 않을 때만 검색어, field, date filter 또는 검색원 coverage를 검토합니다.
+
+## Seed 역할
+
+- **core-security:** Agent 보안 연구로서 Q-A 또는 Q-D 회수가 기대되며 recall 분모에 포함
+- **contextual:** 인접 개념·시스템의 경계 검증용이며 보안 query 회수를 요구하지 않고 recall 분모에서 제외
+
+`data/seed-studies.yaml`의 `seed_role`과 `expected_query_retrieval`로 역할을 명시합니다.
 
 ## 검색원 역할
 
@@ -52,4 +59,11 @@ Crossref와 DBLP를 OpenAlex·arXiv와 동일한 recall denominator로 합치지
 7. 변경 전후 seed recall과 pilot noise 비교
 8. v1.1 query를 고정하거나 protocol deviation 기록
 
-현재 상태는 pending입니다. 구독 데이터베이스 계정은 실행 조건이 아닙니다.
+## 2026-08-21 파일럿 상태
+
+- arXiv v1.1: 전체 seed 14/18 회수
+- arXiv v1.2: 전체 seed 16/18, core-security seed 16/16 회수(100%)
+- 미회수 2편은 contextual seed로서 core-security recall 분모에서 제외
+- OpenAlex: 30건의 HTTP 429로 완료되지 않아 recall을 산출하지 않음
+
+따라서 arXiv는 잠정 90% 기준을 통과했으며, OpenAlex는 rate-aware 재실행 전까지 미검증 상태입니다. 세부 요청 로그와 결과는 [파일럿 결과](pilot-results.md)에 기록합니다. 구독 데이터베이스 계정은 실행 조건이 아닙니다.
