@@ -1,0 +1,65 @@
+schema_version: 1
+last_updated: 2026-08-20
+sources:
+  - id: skillopt-2026
+    title: "SkillOpt: Executive Strategy for Self-Evolving Agent Skills"
+    type: preprint
+    year: 2026
+    url: https://arxiv.org/abs/2605.23904
+    code: https://github.com/microsoft/SkillOpt
+    topics: [self-evolution, skill-optimization, validation]
+    research_role: [evaluation]
+    evidence_status: artifact-checked
+    reproduction_status: not-reproduced
+  - id: skilllens-2026
+    title: "SkillLens: From Task-First Evaluation to Skill-Centered Assessment"
+    type: artifact
+    year: 2026
+    url: https://github.com/SkillLens-AI/skilllens
+    dataset_doi: https://doi.org/10.5281/zenodo.20253170
+    topics: [skill-evaluation, dynamic-analysis, security]
+    research_role: [defense, evaluation]
+    evidence_status: artifact-checked
+    reproduction_status: not-reproduced
+    note: "Repository states that the arXiv preprint is forthcoming."
+  - id: sso-2024
+    title: "Skill Set Optimization: Reinforcing Language Model Behavior via Transferable Skills"
+    type: preprint
+    year: 2024
+    doi: 10.48550/arXiv.2402.03244
+    url: https://arxiv.org/abs/2402.03244
+    topics: [skill-learning, trajectory, continual-improvement]
+    research_role: [evaluation]
+    evidence_status: metadata-checked
+    reproduction_status: not-reproduced
+  - id: agentpoison-2024
+    title: "AgentPoison: Red-teaming LLM Agents via Poisoning Memory or Knowledge Bases"
+    type: preprint
+    year: 2024
+    doi: 10.48550/arXiv.2407.12784
+    url: https://arxiv.org/abs/2407.12784
+    topics: [memory-poisoning, knowledge-base, backdoor]
+    research_role: [attack, evaluation]
+    evidence_status: metadata-checked
+    reproduction_status: not-reproduced
+  - id: misevolve-2025
+    title: "Your Agent May Misevolve: Emergent Risks in Self-evolving LLM Agents"
+    type: preprint
+    year: 2025
+    doi: 10.48550/arXiv.2509.26354
+    url: https://arxiv.org/abs/2509.26354
+    topics: [self-evolution, emergent-risk]
+    research_role: [threat-model, attack, evaluation]
+    evidence_status: metadata-checked
+    reproduction_status: not-reproduced
+  - id: agentsight-2025
+    title: "AgentSight: System-Level Observability for AI Agents Using eBPF"
+    type: paper
+    year: 2025
+    doi: 10.48550/arXiv.2508.02736
+    url: https://arxiv.org/abs/2508.02736
+    code: https://github.com/agent-sight/agentsight
+    topics: [runtime-observability, ebpf, provenance]
+    research_role: [defense, evaluation]
+    evidence_status: artifact-checked
+    reproduction_status: not-reproduced

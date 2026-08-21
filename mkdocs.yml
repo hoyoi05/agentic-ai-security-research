@@ -1,0 +1,35 @@
+site_name: Agentic AI Security Research
+site_description: Public research portal for Agentic AI security
+site_url: https://hoyoi05.github.io/agentic-ai-security-research/
+repo_url: https://github.com/hoyoi05/agentic-ai-security-research
+repo_name: hoyoi05/agentic-ai-security-research
+theme:
+  name: material
+  language: ko
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - content.code.copy
+plugins:
+  - search
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+nav:
+  - 홈: index.md
+  - 연구 의제:
+      - 신규 주제 탐색: research/topic-exploration.md
+  - 서베이:
+      - 범위와 방법: survey/scope.md
+      - 위협 모델: survey/threat-model.md
+      - 연구 갭: survey/research-gaps.md
+  - 문헌:
+      - 검증 카탈로그: literature/catalog.md
+  - 실험:
+      - 연구 설계: experiments/design.md
+  - 자료 관리 정책: resources/policy.md
+  - 기여 방법: contributing.md
