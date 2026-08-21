@@ -7,17 +7,20 @@ The repository hosts a **systematic mapping study (SMS)** of Agentic AI security
 ## Research workflow
 
 1. Define and version the mapping protocol.
-2. Search Scopus, Web of Science, and IEEE Xplore using database-specific queries.
-3. Deduplicate and screen records using explicit inclusion and exclusion criteria.
-4. Code included studies with a shared taxonomy and evidence scale.
-5. Analyze research density, evaluation practice, reproducibility, and gaps.
-6. Select high-contribution topics for focused reviews and empirical studies.
+2. Search OpenAlex and arXiv as core open discovery sources, with Semantic Scholar as a secondary source.
+3. Normalize DOI and publication metadata through Crossref, DBLP, and official publication pages.
+4. Deduplicate and screen records using explicit inclusion and exclusion criteria.
+5. Code included studies with a shared taxonomy and evidence scale.
+6. Analyze research density, evaluation practice, reproducibility, and gaps.
+7. Select high-contribution topics for focused reviews and empirical studies.
+
+Scopus, Web of Science, and IEEE Xplore are not executed without subscription access. This limitation is reported explicitly rather than replacing unavailable result counts with estimates. Google Scholar is used only as a supplementary discovery path.
 
 The initial self-evolving-agent track remains part of the map. It covers experience, trajectory, memory, and skill poisoning; persistent backdoors; unsafe capability acquisition; and runtime-verified skill promotion.
 
 ## Focused research track
 
-Agent Forensics is maintained as a focused follow-up track. The mapping study identifies its position and evidence gaps, while the separate paper repository contains the detailed review manuscript and experiments.
+Agent Forensics and FRIDA are maintained as focused follow-up tracks. The public mapping study identifies their position and evidence gaps. Detailed unpublished design and manuscript work remains in separate private repositories.
 
 ## Research portal
 
