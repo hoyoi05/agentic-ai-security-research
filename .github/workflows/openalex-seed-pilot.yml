@@ -1,0 +1,55 @@
+name: OpenAlex authenticated seed pilot
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/openalex-seed-pilot.yml
+
+permissions:
+  contents: read
+
+jobs:
+  pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify secret is configured
+        shell: bash
+        run: |
+          if [ -z "$OPENALEX_API_KEY" ]; then
+            echo "OPENALEX_API_KEY repository secret is not configured."
+            exit 1
+          fi
+
+      - name: Run authenticated pilot
+        run: python scripts/run-seed-recall-pilot.py
+
+      - name: Validate outputs
+        run: |
+          python -m json.tool scripts/output/pilot-summary-2026-08-21.json >/dev/null
+          test -s scripts/output/seed-recall-pilot-2026-08-21.csv
+          test -s scripts/output/pilot-search-log-2026-08-21.csv
+
+      - name: Upload pilot artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: openalex-seed-pilot
+          path: |
+            scripts/output/seed-recall-pilot-2026-08-21.csv
+            scripts/output/pilot-search-log-2026-08-21.csv
+            scripts/output/pilot-summary-2026-08-21.json
+          if-no-files-found: error
+          retention-days: 30
