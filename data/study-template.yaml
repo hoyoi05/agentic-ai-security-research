@@ -1,0 +1,62 @@
+schema_version: 1
+study_id: ""
+study_family_id: ""
+bibliography:
+  title: ""
+  authors: []
+  year: null
+  publication_type: ""
+  venue: ""
+  doi: ""
+  arxiv_id: ""
+  url: ""
+discovery:
+  source_database: ""
+  search_run_id: ""
+  discovered_at: ""
+  discovery_method: database-search
+screening:
+  title_abstract_decision: pending
+  full_text_decision: pending
+  exclusion_reason: ""
+  decision_notes: ""
+classification:
+  research_roles: []
+  security_domains: []
+  agent_lifecycle_stages: []
+  affected_layers: []
+  security_outcomes: []
+  defense_stages: []
+threat_model:
+  attacker_positions: []
+  protected_assets: []
+  attack_surfaces: []
+  trust_boundaries: []
+system:
+  agent_types: []
+  frameworks: []
+  models: []
+  tools_or_protocols: []
+  deployment_environments: []
+evaluation:
+  maturity: ""
+  datasets: []
+  benchmarks: []
+  baselines: []
+  metrics: []
+  repetitions: null
+  system_effect_measured: false
+artifacts:
+  code_url: ""
+  data_url: ""
+  trace_url: ""
+  version_or_commit: ""
+evidence:
+  evidence_status: author-claimed
+  reproduction_status: not-attempted
+findings:
+  author_claims: []
+  reported_limitations: []
+  author_stated_gaps: []
+  mapper_inferred_gaps: []
+notes: ""

@@ -24,7 +24,9 @@ nav:
   - 연구 의제:
       - 신규 주제 탐색: research/topic-exploration.md
   - 서베이:
-      - 범위와 방법: survey/scope.md
+      - 범위와 연구 질문: survey/scope.md
+      - SMS 프로토콜: survey/protocol.md
+      - 코딩 프레임워크: survey/coding-framework.md
       - 위협 모델: survey/threat-model.md
       - 연구 갭: survey/research-gaps.md
   - 문헌:
