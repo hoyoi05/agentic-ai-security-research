@@ -1,0 +1,69 @@
+name: Full OpenAlex and arXiv retrieval
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/full-retrieval.yml
+      - scripts/full-retrieval.py
+
+permissions:
+  contents: read
+
+concurrency:
+  group: full-openalex-arxiv-retrieval
+  cancel-in-progress: false
+
+jobs:
+  retrieve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Verify secret
+        shell: bash
+        run: |
+          if [ -z "$OPENALEX_API_KEY" ]; then
+            echo "OPENALEX_API_KEY repository secret is not configured."
+            exit 1
+          fi
+
+      - name: Compile retrieval code
+        run: python -m py_compile scripts/full-retrieval.py
+
+      - name: Retrieve and deduplicate
+        run: python scripts/full-retrieval.py --output full-retrieval-output
+
+      - name: Validate outputs
+        run: |
+          python -m json.tool full-retrieval-output/retrieval-summary.json >/dev/null
+          gzip -t full-retrieval-output/source-records.jsonl.gz
+          test -s full-retrieval-output/deduplicated-screening-set.csv
+          test -s full-retrieval-output/request-log.csv
+
+      - name: Add run summary
+        shell: bash
+        run: |
+          echo '## Retrieval summary' >> "$GITHUB_STEP_SUMMARY"
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          cat full-retrieval-output/retrieval-summary.json >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload retrieval artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: openalex-arxiv-full-retrieval
+          path: full-retrieval-output/
+          if-no-files-found: error
+          retention-days: 30
