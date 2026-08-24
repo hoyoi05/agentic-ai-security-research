@@ -1,0 +1,16 @@
+{
+  "openalex": {
+    "seed_count": 18,
+    "indexed": 18,
+    "retrieved_union": 18,
+    "conditional_recall": 1.0
+  },
+  "arxiv": {
+    "seed_count": 18,
+    "indexed": 18,
+    "retrieved_union": 16,
+    "conditional_recall": 0.8888888888888888
+  },
+  "requests": 345,
+  "generated_at_utc": "2026-08-21T08:32:12+00:00"
+}

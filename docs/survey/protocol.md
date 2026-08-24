@@ -1,8 +1,8 @@
 # 체계적 매핑 연구 프로토콜
 
-> 프로토콜 버전: 1.2-pilot  
+> 프로토콜 버전: 1.3.1-pilot  
 > 기준일: 2026-08-21  
-> 상태: arXiv pilot 완료; OpenAlex rate-aware 재실행 필요  
+> 상태: arXiv·OpenAlex seed-recall pilot 완료  
 > 변경 사유: Scopus, Web of Science와 IEEE Xplore 구독 접근 부재
 
 ## 1. 프로토콜 관리
