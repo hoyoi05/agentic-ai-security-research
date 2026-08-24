@@ -145,3 +145,7 @@ preprint와 peer-reviewed 버전은 하나의 study family로 연결합니다. p
 - 검색원 coverage와 metadata limitation
 
 구독 데이터베이스를 실행하지 않았다는 사실은 제한사항으로 명시하며, 실행하지 않은 검색 결과 수를 추정하거나 보고하지 않습니다.
+
+## 12. 현재 실행 단계
+
+OpenAlex v1.3.1과 arXiv v1.2 검색식을 고정하고 전수 pagination, source 내부 정규화, source 간 식별자 기반 중복 제거를 자동화했습니다. 실행 규칙, 산출물과 검토 게이트는 [OpenAlex·arXiv 전수 회수와 중복 제거](full-retrieval.md)에 기록합니다. 자동 생성된 중복군과 스크리닝 입력은 연구자 검토 전 확정 자료로 간주하지 않습니다.
